@@ -1,0 +1,282 @@
+<p-toast />
+<div class="container">
+  <div class="header-container">
+  </div>
+  <div class="card main-card">
+    <div class="table-actions">
+    </div>
+    <form [formGroup]="formulario" (ngSubmit)="salvarMembro()">
+      <div>
+        <p-tabs value="0">
+          <p-tablist>
+            <p-tab value="0">Dados Gerais</p-tab>
+            <p-tab value="1">Endereço</p-tab>
+            <p-tab value="2">Dados Eclesiásticos</p-tab>
+          </p-tablist>
+          <p-tabpanels>
+            <p-tabpanel value="0">
+              <div class="grid grid-cols-12 gap-4 mt-3">
+                <div class="col-span-12 md:col-span-6 lg:col-span-4">
+                  <p-floatlabel>
+                    <input [required]="true" pInputText fluid id="nomeCompleto" formControlName="nomeCompleto" [ngClass]=""/>
+                    <label for="nomeCompleto">Nome Completo</label>
+                  </p-floatlabel>
+                  @if (formulario.get('nomeCompleto')?.invalid && formulario.get('nomeCompleto')?.touched) {
+                  <div class="mensagem-erro">Campo de preenchimento obrigátorio</div>
+                  }
+                </div>
+                <div class="col-span-12 md:col-span-6 lg:col-span-4">
+                  <p-floatlabel>
+                    <p-select id="sexo" formControlName="sexo" [options]="sexo" fluid optionLabel="label"
+                      optionValue="value" [showClear]="true" appendTo="body" />
+                    <label for="sexo">Sexo</label>
+                  </p-floatlabel>
+                </div>
+                <div class="col-span-12 md:col-span-6 lg:col-span-4">
+                  <p-floatlabel>
+                    <p-datepicker formControlName="dataNascimento" fluid inputId="dataNascimento" iconDisplay="input"
+                      showIcon [showButtonBar]="true" inputStyleClass="p-inputtext-sm" dateFormat="dd/mm/yy" />
+                    <label for="dataNascimento">Data de Nascimento</label>
+                  </p-floatlabel>
+                </div>
+              </div>
+              <div class="grid grid-cols-12 gap-4 mt-5">
+                <div class="col-span-12 md:col-span-6 lg:col-span-4">
+                  <p-floatlabel>
+                    <input pInputText fluid id="cidadeNascimento" formControlName="cidadeNascimento" />
+                    <label for="cidadeNascimento">Cidade de nascimento</label>
+                  </p-floatlabel>
+                </div>
+                <div class="col-span-12 md:col-span-6 lg:col-span-4">
+                  <p-floatlabel>
+                    <p-select id="estadoCivil" formControlName="estadoCivil" [options]="estadoCivil" fluid
+                      optionLabel="label" optionValue="value" [showClear]="true" appendTo="body" />
+                    <label for="sexo">Estado Civil</label>
+                  </p-floatlabel>
+                </div>
+                @if (formulario.get('estadoCivil')?.value != "SOLTEIRO" && formulario.get('estadoCivil')?.value != null)
+                {
+                <div class="col-span-12 md:col-span-6 lg:col-span-4">
+                  <p-floatlabel>
+                    <p-datepicker formControlName="dataCasamento" fluid inputId="dataCasamento" iconDisplay="input"
+                      showIcon [showButtonBar]="true" inputStyleClass="p-inputtext-sm" dateFormat="dd/mm/yy" />
+                    <label for="dataCasamento">Data de Casamento</label>
+                  </p-floatlabel>
+                </div>
+                <div class="col-span-12 md:col-span-6 lg:col-span-4">
+                  <p-floatlabel>
+                    <input id="conjuge" pInputText fluid formControlName="conjuge" />
+                    <label for="conjuge">Conjuge</label>
+                  </p-floatlabel>
+                </div>
+                }
+              </div>
+              <div class="grid grid-cols-12 gap-4 mt-5">
+                <div class="col-span-12 md:col-span-6 lg:col-span-4">
+                  <p-floatlabel>
+                    <input pInputText fluid id="mae" formControlName="mae" />
+                    <label for="mae">Nome da Mãe</label>
+                  </p-floatlabel>
+                </div>
+                <div class="col-span-12 md:col-span-6 lg:col-span-4">
+                  <p-floatlabel>
+                    <input pInputText fluid id="pai" formControlName="pai" />
+                    <label for="pai">Nome da Pai</label>
+                  </p-floatlabel>
+                </div>
+                <div class="col-span-12 md:col-span-6 lg:col-span-4">
+                  <p-floatlabel>
+                    <input pInputText fluid id="celular" formControlName="celular" />
+                    <label for="celular">Celular</label>
+                  </p-floatlabel>
+                </div>
+              </div>
+              <div class="grid grid-cols-12 gap-4 mt-5">
+                <div class="col-span-12 md:col-span-6 lg:col-span-4">
+                  <p-floatlabel>
+                    <input type="email" pInputText fluid id="email" formControlName="email" />
+                    <label for="email">Email</label>
+                  </p-floatlabel>
+                </div>
+              </div>
+            </p-tabpanel>
+            <p-tabpanel value="1">
+              <div formGroupName="enderecoAtual">
+                <div class="grid grid-cols-12 gap-4 mt-3">
+                <div class="col-span-12 md:col-span-6 lg:col-span-6">
+                  <p-floatlabel>
+                    <input pInputText fluid id="cep" formControlName="cep" />
+                    <label for="cep">CEP</label>
+                  </p-floatlabel>
+                </div>
+                <div class="col-span-12 md:col-span-6 lg:col-span-6">
+                  <p-floatlabel>
+                    <input pInputText fluid id="uf" formControlName="uf" />
+                    <label for="uf">UF</label>
+                  </p-floatlabel>
+                </div>
+              </div>
+              <div class="grid grid-cols-12 gap-4 mt-5">
+                <div class="col-span-12 md:col-span-6 lg:col-span-6">
+                  <p-floatlabel>
+                    <input pInputText fluid id="cidade" formControlName="cidade" />
+                    <label for="nome">Cidade</label>
+                  </p-floatlabel>
+                </div>
+                <div class="col-span-12 md:col-span-6 lg:col-span-6">
+                  <p-floatlabel>
+                    <input pInputText fluid id="logradouro" formControlName="logradouro" />
+                    <label for="logradouro">Endereço</label>
+                  </p-floatlabel>
+                </div>
+              </div>
+              <div class="grid grid-cols-12 gap-4 mt-5">
+                <div class="col-span-12 md:col-span-6 lg:col-span-6">
+                  <p-floatlabel>
+                    <input pInputText fluid id="bairro" formControlName="bairro" />
+                    <label for="bairro">Bairro</label>
+                  </p-floatlabel>
+                </div>
+                <div class="col-span-12 md:col-span-6 lg:col-span-6">
+                  <p-floatlabel>
+                    <input pInputText fluid id="complemento" formControlName="complemento" />
+                    <label for="complemento">Complemento</label>
+                  </p-floatlabel>
+                </div>
+              </div>
+              </div>
+            </p-tabpanel>
+            <p-tabpanel value="2">
+              <div class="grid grid-cols-12 gap-4 mt-3">
+                <div class="col-span-12 md:col-span-6 lg:col-span-4">
+                  <p-floatlabel>
+                    <p-select id="tipoMembro" formControlName="tipoMembro" [options]="tipoMembro" fluid
+                      optionLabel="label" optionValue="value" [showClear]="true" appendTo="body" />
+                    <label for="tipoMembro">Tipo Membro</label>
+                  </p-floatlabel>
+                </div>
+                <div class="col-span-12 md:col-span-6 lg:col-span-4">
+                  <p-floatlabel>
+                    <input type="situacao" pInputText fluid id="situacao" formControlName="situacao" />
+                    <label for="situacao">Situação</label>
+                  </p-floatlabel>
+                </div>
+              </div>
+              <div class="grid grid-cols-12 gap-4 mt-5">
+                <div class="col-span-12 md:col-span-6 lg:col-span-4">
+                  <p-floatlabel>
+                    <p-datepicker formControlName="dataBatismo" fluid inputId="dataBatismo" iconDisplay="input" showIcon
+                      [showButtonBar]="true" inputStyleClass="p-inputtext-sm" dateFormat="dd/mm/yy" />
+                    <label for="dataBatismo">Data de Batismo</label>
+                  </p-floatlabel>
+                </div>
+                <div class="col-span-12 md:col-span-6 lg:col-span-4">
+                  <p-floatlabel>
+                    <input pInputText fluid id="pastorOficiante" formControlName="pastorOficiante" />
+                    <label for="pastorOficiante">Pastor Oficiante</label>
+                  </p-floatlabel>
+                </div>
+                <div class="col-span-12 md:col-span-6 lg:col-span-4">
+                  <p-floatlabel>
+                    <p-datepicker formControlName="dataBatismoEspiritoSanto" fluid inputId="dataBatismoEspiritoSanto"
+                      iconDisplay="input" showIcon [showButtonBar]="true" inputStyleClass="p-inputtext-sm"
+                      dateFormat="dd/mm/yy" />
+                    <label for="dataBatismoEspiritoSanto">Batismo Espírito Santo</label>
+                  </p-floatlabel>
+                </div>
+              </div>
+              <div class="grid grid-cols-12 gap-4 mt-5">
+                <div class="col-span-12 md:col-span-6 lg:col-span-4">
+                  <p-floatlabel>
+                    <p-datepicker formControlName="dataAdmissao" fluid inputId="dataAdmissao" iconDisplay="input"
+                      showIcon [showButtonBar]="true" inputStyleClass="p-inputtext-sm" dateFormat="dd/mm/yy" />
+                    <label for="dataAdmissao">Data Admissão</label>
+                  </p-floatlabel>
+                </div>
+                <div class="col-span-12 md:col-span-6 lg:col-span-4">
+                  <p-floatlabel>
+                    <p-select id="admitidoPor" formControlName="admitidoPor" [options]="tipoAdmissao" fluid
+                      optionLabel="label" optionValue="value" [showClear]="true" appendTo="body" />
+                    <label for="admitidoPor">Admitido por</label>
+                  </p-floatlabel>
+                </div>
+                @if (formulario.get('admitidoPor')?.value == "OUTRO") {
+                <div class="col-span-12 md:col-span-6 lg:col-span-4">
+                  <p-floatlabel>
+                    <input pInputText fluid id="admitidoPorOutro" formControlName="admitidoPorOutro" />
+                    <label for="admitidoPorOutro">Admitido por outro</label>
+                  </p-floatlabel>
+                </div>
+                }
+              </div>
+              <div class="grid grid-cols-12 gap-4 mt-5">
+                <div class="col-span-12 md:col-span-6 lg:col-span-4">
+                  <p-floatlabel>
+                    <input pInputText fluid id="ministerioPrincipal" formControlName="ministerioPrincipal" />
+                    <label for="ministerioPrincipal">Ministerio Principal</label>
+                  </p-floatlabel>
+                </div>
+                <div class="col-span-12 md:col-span-6 lg:col-span-4">
+                  <p-floatlabel>
+                    <input pInputText fluid id="funcaoMinisterial" formControlName="funcaoMinisterial" />
+                    <label for="funcaoMinisterial">Função Ministerial</label>
+                  </p-floatlabel>
+                </div>
+                <div class="col-span-12 md:col-span-6 lg:col-span-4">
+                  <p-floatlabel>
+                    <input pInputText fluid id="departamentoPrincipal" formControlName="departamentoPrincipal" />
+                    <label for="departamentoPrincipal">Departamento Principal</label>
+                  </p-floatlabel>
+                </div>
+              </div>
+              <div class="grid grid-cols-12 gap-4 mt-5">
+                <div class="col-span-12 md:col-span-6 lg:col-span-4">
+                  <p-floatlabel>
+                    <input pInputText fluid id="funcaoDepartamental" formControlName="funcaoDepartamental" />
+                    <label for="funcaoDepartamental">Função Departamental</label>
+                  </p-floatlabel>
+                </div>
+                <div class="col-span-12 md:col-span-6 lg:col-span-4">
+                  <p-floatlabel>
+                    <p-datepicker formControlName="dataRemocao" fluid inputId="dataRemocao" iconDisplay="input" showIcon
+                      [showButtonBar]="true" inputStyleClass="p-inputtext-sm" dateFormat="dd/mm/yy" />
+                    <label for="dataRemocao">Data Remoção</label>
+                  </p-floatlabel>
+                </div>
+                @if (formulario.get('dataRemocao')?.value) {
+                <div class="col-span-12 md:col-span-6 lg:col-span-4">
+                  <p-floatlabel>
+                    <input pInputText fluid id="removidoPor" formControlName="removidoPor" />
+                    <label for="removidoPor">Removido por</label>
+                  </p-floatlabel>
+                </div>
+                }
+              </div>
+              <div class="grid grid-cols-12 gap-4 mt-5">
+                <div class="col-span-12 md:col-span-6 lg:col-span-12">
+                  <p-floatlabel>
+                    <textarea pTextarea fluid id="observacoes" formControlName="observacoes" rows="5"></textarea>
+                    <label for="observacoes">Observações</label>
+                  </p-floatlabel>
+                </div>
+              </div>
+            </p-tabpanel>
+            <div class="grid grid-cols-12 gap-4 mt-5">
+              <div class="col-span-12 md:col-span-6 flex gap-3">
+                <button type="submit" class="btn btn-salvar">
+                  <i class="pi pi-save"></i>
+                  Salvar
+                </button>
+
+                <button type="button" class="btn btn-cancelar" routerLink="/membros">
+                  <i class="pi pi-times"></i>
+                  Cancelar
+                </button>
+              </div>
+            </div>
+          </p-tabpanels>
+        </p-tabs>
+      </div>
+    </form>
+  </div>
+</div>

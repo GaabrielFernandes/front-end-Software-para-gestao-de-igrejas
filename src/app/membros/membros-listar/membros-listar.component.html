@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="header-container">
+  </div>
+  <div class="card main-card">
+    <div class="table-actions">
+       <app-btn-cadastrar
+            label="Cadastrar Membro" 
+            routerLink="/membros/cadastrar">
+        </app-btn-cadastrar>
+    </div>
+
+    <p-table
+        [value]="membros"
+        [paginator]="true"
+        [rows]="tamanhoPagina"
+        [totalRecords]="totalRegistros"
+        [lazy]="true"
+        (onLazyLoad)="onPageChange($event)"
+        [responsiveLayout]="'stack'"
+        [rowsPerPageOptions]="[5, 10, 20]"
+        styleClass="p-datatable-striped"
+    >
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="id" style="width:13%"  class="text-xs"><p-sortIcon field="id"/> Código</th>
+                <th pSortableColumn="nomeCompleto"  style="width:30%" class="text-xs"><p-sortIcon field="nomeCompleto"/>Nome Completo</th>            
+                <th pSortableColumn="dataBatismo"  style="width:20%" class="text-xs"><p-sortIcon field="dataBatismo"/>Data de Batismo</th>
+                <th pSortableColumn="dataAdmissao"  style="width:20%" class="text-xs"><p-sortIcon field="dataAdmissao"/> Data de Admissão</th>
+                <th style="width:8%"  class="text-xs">Ações</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-membro>
+            <tr>
+                <td class="text-xs">{{ membro.id }}</td>
+                <td class="text-xs">{{ membro.nomeCompleto }}</td>                
+                <td class="text-xs">{{ membro.dataBatismo}}</td>            
+                <td class="text-xs">{{ membro.dataAdmissao}}</td>        
+                <td class="text-xs"><p-menu #menu [model]="items" [popup]="true" appendTo="body"></p-menu>
+                    <p-button 
+                        (onClick)="abrirMenu(menu, $event, membro)" 
+                        icon="pi pi-ellipsis-v" 
+                        [text]="true" 
+                        severity="secondary">
+                    </p-button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+  </div>
+</div>

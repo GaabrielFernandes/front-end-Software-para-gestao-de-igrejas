@@ -1,0 +1,39 @@
+export interface Endereco{
+    cep?:string;
+    logradouro?:string;
+    bairro?:string;
+    numero?:string;
+    complemento?:string;
+    cidade?:string;
+    uf?:string;
+}
+
+export interface Membro{
+    nomeCompleto?:string;
+    sexo?:string;
+    dataNascimento?:Date;
+    cidadeNascimento?:Date;
+    enderecoAtual?:Endereco;
+    estadoCivil?:string;
+    dataCasamento?:Date;
+    conjuge?:string;
+    mae?:string;
+    pai?:string;
+    celular?:string;
+    email?:string;
+    tipoMembro?:string;
+    situacao?:string;
+    dataBatismo?:Date;
+    pastorOficiante?:string;
+    dataBatismoEspiritoSanto?:string;
+    dataAdmissao?:Date;
+    admitidoPor?:string;
+    admitidoPorOutro?:string;
+    ministerioPrincipal?:string;
+    funcaoMinisterial?:string;
+    departamentoPrincipal?:string;
+    funcaoDepartamental?:string;
+    dataRemocao?:Date;
+    removidoPor?:string;
+    observacoes?:string;
+}

@@ -1,0 +1,24 @@
+::ng-deep .btn-floating {
+  /* Box Shadow suave */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+
+  /* Animação de flutuar (Keyframes) */
+  animation: floating 3s ease-in-out infinite;
+
+  /* Efeito de Hover */
+  &:hover {
+    transform: translateY(-5px); /* Sobe um pouco mais no hover */
+    background-color: #0056b3 !important; /* Azul mais escuro */
+    border-color: #004a99 !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Definição da animação de flutuação */
+@keyframes floating {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}

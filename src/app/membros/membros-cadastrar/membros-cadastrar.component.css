@@ -1,0 +1,73 @@
+
+.container {
+    padding: 40px 20px;
+    position: relative;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: -20px;
+    z-index: 10;
+    position: relative;
+    padding-left: 30px;
+}
+
+.main-card {
+    background: white;
+    padding: 30px 20px 20px 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.table-actions {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 25px;
+    gap: 12px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  border: none;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: background-color 0.2s ease, transform 0.05s ease;
+}
+
+.btn:active {  
+  transform: scale(0.97);
+}
+
+/* 🟢 SALVAR */
+.btn-salvar {
+  background-color: #22C55E;
+  color: #ffffff;
+}
+
+.btn-salvar:hover {
+  background-color: #16A34A;
+}
+
+/* 🔴 CANCELAR */
+.btn-cancelar {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+.btn-cancelar:hover {
+  background-color: #dc2626;
+}
+
+
+

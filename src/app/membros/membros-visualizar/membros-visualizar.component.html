@@ -1,0 +1,134 @@
+<div class="grid grid-cols-12 gap-4 mt-5 text-center">
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>Nome: </strong>{{membro?.nomeCompleto ? membro?.nomeCompleto : 'Não informado'}}</span>
+    </div>
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>Sexo: </strong>{{membro?.sexo ? membro?.sexo : 'Não informado'}}</span>
+    </div>
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>Data de Nascimento: </strong>{{membro?.dataNascimento ? membro?.dataNascimento : 'Não informado'}}</span>
+    </div>
+</div>
+<div class="grid grid-cols-12 gap-4 mt-5 text-center">
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>Cidade de Nascimento: </strong>{{membro?.cidadeNascimento ? membro?.cidadeNascimento : 'Não informado'}}</span>
+    </div>
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>CEP Nascimento: </strong>{{membro?.cepNascimento ? membro?.cepNascimento : 'Não informado'}}</span>
+    </div>
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>UF Nascimento: </strong>{{membro?.ufNascimento ? membro?.ufNascimento : 'Não informado'}}</span>
+    </div>
+</div>
+<div class="grid grid-cols-12 gap-4 mt-5 text-center">
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>Cidade Atual: </strong>{{membro?.cidadeAtual ? membro?.cidadeAtual : 'Não informado'}}</span>
+    </div>
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>CEP Atual: </strong>{{membro?.cepAtual ? membro?.cepAtual : 'Não informado'}}</span>
+    </div>
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>UF Atual: </strong>{{membro?.ufAtual ? membro?.ufAtual : 'Não informado'}}</span>
+    </div>
+</div>
+<div class="grid grid-cols-12 gap-4 mt-5 text-center">
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>Estado Civil: </strong>{{membro?.estadoCivil ? membro?.estadoCivil : 'Não informado'}}</span>
+    </div>
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>Data de Casamento: </strong>{{membro?.dataCasamento ? membro?.dataCasamento : 'Não informado'}}</span>
+    </div>
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>Conjuge: </strong>{{membro?.conjuge ? membro?.conjuge : 'Não informado'}}</span>
+    </div>
+</div>
+<div class="grid grid-cols-12 gap-4 mt-5 text-center">
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>Mãe: </strong>{{membro?.mae ? membro?.mae : 'Não informado'}}</span>
+    </div>
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>Pai: </strong>{{membro?.pai ? membro?.pai : 'Não informado'}}</span>
+    </div>
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>Celular: </strong>{{membro?.celular ? membro?.celular : 'Não informado'}}</span>
+    </div>
+</div>
+<div class="grid grid-cols-12 gap-4 mt-5 text-center">
+  <div class="col-span-12 md:col-span-6 lg:col-span-4">
+    <span><strong>Cep: </strong>{{membro?.enderecoAtual?.cep ? membro?.enderecoAtual?.cep : 'Não informado'}}</span>
+  </div>
+  <div class="col-span-12 md:col-span-6 lg:col-span-4">
+    <span><strong>Cidade: </strong>{{membro?.enderecoAtual?.cidade ? membro?.enderecoAtual?.cidade : 'Não informado'}}</span>
+  </div>
+  <div class="col-span-12 md:col-span-6 lg:col-span-4">
+    <span><strong>UF: </strong>{{membro?.enderecoAtual?.uf ? membro?.enderecoAtual?.uf : 'Não informado'}}</span>
+  </div>
+</div>
+<div class="grid grid-cols-12 gap-4 mt-5 text-center">
+  <div class="col-span-12 md:col-span-6 lg:col-span-4">
+    <span><strong>Endereco: </strong>{{membro?.enderecoAtual?.logradouro ? membro?.enderecoAtual?.logradouro : 'Não informado'}}</span>
+  </div>
+  <div class="col-span-12 md:col-span-6 lg:col-span-4">
+    <span><strong>Bairro: </strong>{{membro?.enderecoAtual?.bairro ? membro?.enderecoAtual?.bairro : 'Não informado'}}</span>
+  </div>
+  <div class="col-span-12 md:col-span-6 lg:col-span-4">
+    <span><strong>Complemento: </strong>{{membro?.enderecoAtual?.complemento ? membro?.enderecoAtual?.complemento : 'Não informado'}}</span>
+  </div>
+</div>
+<div class="grid grid-cols-12 gap-4 mt-5 text-center">
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>Email: </strong>{{membro?.email ? membro?.email : 'Não informado'}}</span>
+    </div>
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>Tipo de Membro: </strong>{{membro?.tipoMembro ? membro?.tipoMembro : 'Não informado'}}</span>
+    </div>
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>Situação: </strong>{{membro?.situacao ? membro?.situacao : 'Não informado'}}</span>
+    </div>
+</div>
+<div class="grid grid-cols-12 gap-4 mt-5 text-center">
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>Email: </strong>{{membro?.email ? membro?.email : 'Não informado'}}</span>
+    </div>
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>Data de Batismo: </strong>{{membro?.dataBatismo ? membro?.dataBatismo : 'Não informado'}}</span>
+    </div>
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>Batismo com Espirito Santo: </strong>{{membro?.dataBatismoEspiritoSanto ? membro?.dataBatismoEspiritoSanto : 'Não informado'}}</span>
+    </div>
+</div>
+<div class="grid grid-cols-12 gap-4 mt-5 text-center">
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>Data de Admissão: </strong>{{membro?.dataAdmissao ? membro?.dataAdmissao : 'Não informado'}}</span>
+    </div>
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>Admitido por: </strong>{{membro?.admitidoPor ? membro?.admitidoPor : 'Não informado'}}</span>
+    </div>
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>Admitido por outro: </strong>{{membro?.admitidoPorOutro ? membro?.admitidoPorOutro : 'Não informado'}}</span>
+    </div>
+</div>
+<div class="grid grid-cols-12 gap-4 mt-5 text-center">
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>Ministerio Principal: </strong>{{membro?.ministerioPrincipal ? membro?.ministerioPrincipal : 'Não informado'}}</span>
+    </div>
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>Departamento Principal: </strong>{{membro?.departamentoPrincipal ? membro?.departamentoPrincipal : 'Não informado'}}</span>
+    </div>
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>Função Principal: </strong>{{membro?.funcaoDepartamental ? membro?.funcaoDepartamental : 'Não informado'}}</span>
+    </div>
+</div>
+<div class="grid grid-cols-12 gap-4 mt-5 text-center">
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>Data Remoção: </strong>{{membro?.dataRemocao ? membro?.dataRemocao : 'Não informado'}}</span>
+    </div>
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <span><strong>Removido por: </strong>{{membro?.removidoPor ? membro?.removidoPor : 'Não informado'}}</span>
+    </div>
+</div>
+<div class="grid grid-cols-12 mt-5 gap-4 text-center">
+    <div class="col-span-12">
+        <span><strong>Observação: </strong>{{membro?.observacoes ? membro?.observacoes : 'Não informado'}}</span>
+    </div>
+</div>

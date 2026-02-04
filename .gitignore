@@ -1,0 +1,23 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Angular
+dist/
+.angular/
+out-tsc/
+coverage/
+
+# Environment
+.env
+.env.*
+
+# IDEs
+.idea/
+.vscode/
+.history/
+
+# OS
+.DS_Store
+Thumbs.db

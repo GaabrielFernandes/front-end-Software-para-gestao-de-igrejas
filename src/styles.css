@@ -1,0 +1,47 @@
+@import "primeicons/primeicons.css";
+@import "primeflex/primeflex.scss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  /* Substituindo Roboto por Inter */
+  font-family: 'Inter', sans-serif;
+  background: #f4f7fa;
+  
+  /* Melhora a renderização da fonte em telas de alta densidade */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  color: #334155; /* Um tom de cinza escuro azulado, melhor que o preto puro */
+}
+
+/* Garante que componentes de formulário e botões usem a fonte correta */
+input, button, select, textarea {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Dica para sua tabela: deixa os números alinhados verticalmente */
+table {
+  font-variant-numeric: tabular-nums;
+}
+
+.mensagem-erro {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #b71c1c;                 /* vermelho escuro */
+
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.mensagem-erro i {
+  font-size: 1.1rem;
+}
