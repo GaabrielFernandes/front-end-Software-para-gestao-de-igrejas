@@ -192,7 +192,8 @@ export class MembrosCadastrarComponent implements OnInit {
             title: 'Alterações salvas!',
             text: 'Membro atualizado com sucesso',
             icon: 'success'
-          }).then(() => this.router.navigate(['/membros']));
+          })
+          this.router.navigate(['/membros']);
         },
         error: () => {
           Swal.fire({
@@ -210,7 +211,8 @@ export class MembrosCadastrarComponent implements OnInit {
           title: 'Cadastro realizado!',
           text: 'Membro salvo com sucesso',
           icon: 'success'
-        }).then(() => this.router.navigate(['/membros']));
+        })
+        this.router.navigate(['/membros']);
       },
       error: (mensagemErro) => {
         console.log(mensagemErro)
@@ -257,11 +259,11 @@ export class MembrosCadastrarComponent implements OnInit {
 
     this.formulario.patchValue({
       enderecoAtual: {
-        logradouro: res.logradouro || null,
-        bairro: res.bairro || null,
-        cidade: res.localidade || null,
-        uf: res.uf || null,
-        complemento: res.complemento || null,
+        logradouro: res.logradouro ? res.logradouro : this.formulario.get('enderecoAtual.logradouro')?.value,
+        bairro: res.bairro ? res.bairro : this.formulario.get('enderecoAtual.bairro')?.value,
+        cidade: res.localidade ? res.localidade : this.formulario.get('enderecoAtual.cidade')?.value,
+        uf: res.uf ? res.uf : this.formulario.get('enderecoAtual.uf')?.value,
+        complemento: res.complemento ? res.complemento : this.formulario.get('enderecoAtual.complemento')?.value,
       }
     });
   });
