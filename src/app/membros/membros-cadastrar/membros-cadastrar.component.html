@@ -51,14 +51,14 @@
                   <p-floatlabel>
                     <p-select id="estadoCivil" formControlName="estadoCivil" [options]="estadoCivil" fluid
                       optionLabel="label" optionValue="value" [showClear]="true" appendTo="body" />
-                    <label for="sexo">Estado Civil</label>
+                    <label for="estadoCivil">Estado Civil</label>
                   </p-floatlabel>
                 </div>
                 @if (formulario.get('estadoCivil')?.value != "SOLTEIRO" && formulario.get('estadoCivil')?.value != null)
                 {
                 <div class="col-span-12 md:col-span-6 lg:col-span-4">
                   <p-floatlabel>
-                    <p-datepicker formControlName="dataCasamento" fluid inputId="dataCasamento" iconDisplay="input"
+                    <p-datePicker formControlName="dataCasamento" fluid inputId="dataCasamento" iconDisplay="input"
                       showIcon [showButtonBar]="true" inputStyleClass="p-inputtext-sm" dateFormat="dd/mm/yy" />
                     <label for="dataCasamento">Data de Casamento</label>
                   </p-floatlabel>

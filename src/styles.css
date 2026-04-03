@@ -14,11 +14,11 @@ body {
   /* Substituindo Roboto por Inter */
   font-family: 'Inter', sans-serif;
   background: #f4f7fa;
-  
+
   /* Melhora a renderização da fonte em telas de alta densidade */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+
   color: #334155; /* Um tom de cinza escuro azulado, melhor que o preto puro */
 }
 

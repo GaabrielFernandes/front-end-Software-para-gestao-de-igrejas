@@ -7,7 +7,8 @@ import { TesourariaListarComponent } from './tesouraria/tesouraria-listar/tesour
 import { ConselhoFiscalListarComponent } from './conselho-fiscal/conselho-fiscal-listar/conselho-fiscal-listar.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', loadComponent:() => import('./login/login.component').then(m => m.LoginComponent) },
   { path: 'dashboard', loadComponent:() => import('./dashboard/dashboard.component').then(m => m.DashboardComponent) },
   { path: 'membros', loadChildren:()=> import('./membros/membro.routes').then(m => m.MEMBRO_ROUTES) },
   { path: 'secretaria', component: SecretariaListarComponent },

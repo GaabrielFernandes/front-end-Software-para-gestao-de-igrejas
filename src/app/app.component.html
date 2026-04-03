@@ -1,9 +1,16 @@
-<app-left-sidebar
-  [isLeftSidebarCollapsed]="isLeftSidebarCollapsed()"
-  (changeIsLeftSidebarCollapsed)="changeIsLeftSidebarCollapsed($event)"
-/>
-
-<app-main
-  [isLeftSidebarCollapsed]="isLeftSidebarCollapsed()"
-  [screenWidth]="screenWidth()"
-/>
+@if (!isRouterReady()) {
+  <div style="display: none;"></div>
+} @else if (router.url == '/login') {
+  <app-login></app-login>
+} @else {
+  <app-left-sidebar
+    [isLeftSidebarCollapsed]="isLeftSidebarCollapsed()"
+    (changeIsLeftSidebarCollapsed)="changeIsLeftSidebarCollapsed($event)"
+  />
+  <div class="main-container">
+    <app-main
+      [isLeftSidebarCollapsed]="isLeftSidebarCollapsed()"
+      [screenWidth]="screenWidth()"
+    />
+  </div>
+}

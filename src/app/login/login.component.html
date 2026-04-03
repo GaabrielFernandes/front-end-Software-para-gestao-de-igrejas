@@ -1,0 +1,31 @@
+<body>
+<div class="auth-container">
+  <h1 class="text-center font-bold">Bem-Vindo</h1>
+
+  <form [formGroup]="formulario" (ngSubmit)="enviarCredenciais()">
+      <div class="grid grid-cols-12 gap-4 mt-5">
+        <div class="col-span-12">
+          <p-float-label>
+            <input
+              formControlName="email"
+              pInputText
+              fluid
+            />
+            <label for="">E-mail</label>
+          </p-float-label>
+        </div>
+        <div class="col-span-12">
+          <p-float-label>
+            <p-password formControlName="senha" [toggleMask]="true" [feedback]="false"/>
+            <label for="">Senha</label>
+          </p-float-label>
+        </div>
+      </div>
+      <div class="grid grid-cols-12 gap-4 mt-5">
+        <div class="col-span-12">
+          <p-button type="submit" label="Entrar" severity="help" />
+        </div>
+      </div>
+  </form>
+</div>
+</body>
