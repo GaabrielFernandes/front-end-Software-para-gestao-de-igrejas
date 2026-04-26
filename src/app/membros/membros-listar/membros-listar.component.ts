@@ -9,6 +9,7 @@ import { MembroPage, MembroService } from '../membro.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog'
 import { MembrosVisualizarComponent } from '../membros-visualizar/membros-visualizar.component';
 import Swal from 'sweetalert2';
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-membros-listar',
@@ -20,6 +21,7 @@ import Swal from 'sweetalert2';
     ButtonModule,
     RouterLink,
     BtnCadastrarComponent,
+    DatePipe,
   ],
   templateUrl: './membros-listar.component.html',
   styleUrl: './membros-listar.component.css'
@@ -35,6 +37,7 @@ export class MembrosListarComponent implements OnInit {
 
   ngOnInit(): void {
     this.populaMenu();
+    this.listarMembros();
   }
 
   constructor(

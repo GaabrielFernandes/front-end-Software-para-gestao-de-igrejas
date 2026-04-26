@@ -44,13 +44,11 @@ export class LoginComponent implements OnInit {
 
   enviarCredenciais() {
     this.loginService.autenticacao(this.formulario.value).subscribe({
-      next: response =>{
-        this.router.navigate(["/dashboard"])
-        console.log(response)
-      }
-      ,
-      error: error =>
-        alert('Credenciais inválidas')
-    })
+      next: response => {
+        localStorage.setItem('token', response.token);
+        this.router.navigate(["/dashboard"]);
+      },
+      error: error => alert('Credenciais inválidas')
+    });
   }
 }

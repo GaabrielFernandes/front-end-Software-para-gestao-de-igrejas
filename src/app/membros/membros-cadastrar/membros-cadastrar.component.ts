@@ -127,6 +127,8 @@ export class MembrosCadastrarComponent implements OnInit {
     this.membroservice.buscarPoId(id).subscribe({
       next: (dados) => {
         this.formulario.patchValue(dados);
+        console.log("Valor data nascimento");
+        console.log(this.formulario.get("dataNascimento")?.value);
       },
       error: () => {
 

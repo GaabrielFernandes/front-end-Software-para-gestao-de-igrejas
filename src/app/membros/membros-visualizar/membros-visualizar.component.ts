@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { MembroService } from '../membro.service';
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-membros-visualizar',
   standalone: true,
-  imports: [],
+  imports: [
+    DatePipe
+  ],
   templateUrl: './membros-visualizar.component.html',
   styleUrl: './membros-visualizar.component.css'
 })

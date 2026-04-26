@@ -6,7 +6,7 @@
         <span><strong>Sexo: </strong>{{membro?.sexo ? membro?.sexo : 'Não informado'}}</span>
     </div>
     <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Data de Nascimento: </strong>{{membro?.dataNascimento ? membro?.dataNascimento : 'Não informado'}}</span>
+        <span><strong>Data de Nascimento: </strong>{{membro?.dataNascimento ? (membro?.dataNascimento | date:'dd/MM/yyyy') : 'Não informado'}}</span>
     </div>
 </div>
 <div class="grid grid-cols-12 gap-4 mt-5 text-center">
@@ -36,7 +36,7 @@
         <span><strong>Estado Civil: </strong>{{membro?.estadoCivil ? membro?.estadoCivil : 'Não informado'}}</span>
     </div>
     <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Data de Casamento: </strong>{{membro?.dataCasamento ? membro?.dataCasamento : 'Não informado'}}</span>
+        <span><strong>Data de Casamento: </strong>{{membro?.dataCasamento ? (membro?.dataCasamento | date:'dd/MM/yyyy') : 'Não informado'}}</span>
     </div>
     <div class="col-span-12 md:col-span-6 lg:col-span-4">
         <span><strong>Conjuge: </strong>{{membro?.conjuge ? membro?.conjuge : 'Não informado'}}</span>
@@ -91,7 +91,7 @@
         <span><strong>Email: </strong>{{membro?.email ? membro?.email : 'Não informado'}}</span>
     </div>
     <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Data de Batismo: </strong>{{membro?.dataBatismo ? membro?.dataBatismo : 'Não informado'}}</span>
+        <span><strong>Data de Batismo: </strong>{{membro?.dataBatismo ? (membro?.dataBatismo | date:'dd/MM/yyyy') : 'Não informado'}}</span>
     </div>
     <div class="col-span-12 md:col-span-6 lg:col-span-4">
         <span><strong>Batismo com Espirito Santo: </strong>{{membro?.dataBatismoEspiritoSanto ? membro?.dataBatismoEspiritoSanto : 'Não informado'}}</span>
@@ -99,7 +99,7 @@
 </div>
 <div class="grid grid-cols-12 gap-4 mt-5 text-center">
     <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Data de Admissão: </strong>{{membro?.dataAdmissao ? membro?.dataAdmissao : 'Não informado'}}</span>
+        <span><strong>Data de Admissão: </strong>{{membro?.dataAdmissao ? (membro?.dataAdmissao | date:'dd/MM/yyyy') : 'Não informado'}}</span>
     </div>
     <div class="col-span-12 md:col-span-6 lg:col-span-4">
         <span><strong>Admitido por: </strong>{{membro?.admitidoPor ? membro?.admitidoPor : 'Não informado'}}</span>
@@ -121,7 +121,7 @@
 </div>
 <div class="grid grid-cols-12 gap-4 mt-5 text-center">
     <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Data Remoção: </strong>{{membro?.dataRemocao ? membro?.dataRemocao : 'Não informado'}}</span>
+        <span><strong>Data Remoção: </strong>{{membro?.dataRemocao ? (membro?.dataRemocao | date:'dd/MM/yyyy') : 'Não informado'}}</span>
     </div>
     <div class="col-span-12 md:col-span-6 lg:col-span-4">
         <span><strong>Removido por: </strong>{{membro?.removidoPor ? membro?.removidoPor : 'Não informado'}}</span>
