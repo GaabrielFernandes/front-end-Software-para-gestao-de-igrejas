@@ -13,21 +13,90 @@
       </button>
     }
   </div>
+
   <div class="sidenav-nav">
-    @for (item of items; track $index) {
-      <li class="sidenav-nav-item">
-        <a
-          class="sidenav-nav-link"
-          [routerLink]="item.routeLink"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <i class="sidenav-link-icon" [class]="item.icon"></i>
-          @if (!isLeftSidebarCollapsed()) {
-            <span class="sidenav-link-text">{{ item.label }}</span>
+    @for (item of menuItems; track $index) {
+      <!-- Item com submenu -->
+      @if (item.submenu && item.submenu.length > 0) {
+        <li class="sidenav-nav-item">
+          <a
+            class="sidenav-nav-link"
+            (click)="toggleSubmenu(item, $event)"
+            [class.submenu-parent]="item.isOpen"
+          >
+            <i class="sidenav-link-icon" [class]="item.icon"></i>
+            @if (!isLeftSidebarCollapsed()) {
+              <span class="sidenav-link-text">{{ item.label }}</span>
+              <i class="fal submenu-arrow" [class.rotated]="item.isOpen"></i>
+            }
+          </a>
+
+          <!-- Submenu -->
+          @if (!isLeftSidebarCollapsed() && item.isOpen) {
+            <ul class="submenu">
+              @for (subItem of item.submenu; track subItem.routeLink) {
+                <li class="submenu-item">
+                  <a
+                    [routerLink]="subItem.routeLink"
+                    routerLinkActive="active-sub"
+                    class="submenu-link"
+                    (click)="$event.stopPropagation()"
+                  >
+                    <i class="submenu-icon" [class]="subItem.icon"></i>
+                    <span class="submenu-text">{{ subItem.label }}</span>
+                  </a>
+                </li>
+              }
+            </ul>
           }
-        </a>
-      </li>
+        </li>
+      } @else {
+        <!-- Item sem submenu -->
+        <li class="sidenav-nav-item">
+          <a
+            class="sidenav-nav-link"
+            [routerLink]="item.routeLink"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <i class="sidenav-link-icon" [class]="item.icon"></i>
+            @if (!isLeftSidebarCollapsed()) {
+              <span class="sidenav-link-text">{{ item.label }}</span>
+            }
+          </a>
+        </li>
+      }
     }
+  </div>
+
+  <!-- Card de informações do usuário - Versão expandida -->
+  @if (!isLeftSidebarCollapsed()) {
+    <div class="user-info-card">
+      <div class="user-avatar">
+        <i class="fal fa-user-circle"></i>
+      </div>
+      <div class="user-details">
+        <div class="user-name">{{ nomeUsuario || 'Usuário' }}</div>
+        <div class="user-role">{{ departamentoUsuario || 'Membro' }}</div>
+      </div>
+      <div class="current-date">{{ dataAtual | date: "dd/MM/yyyy h:mm:ss" }}</div>
+    </div>
+  }
+
+  <!-- Card de informações do usuário - Versão colapsada -->
+  @if (isLeftSidebarCollapsed()) {
+    <div class="user-info-card-collapsed">
+      <i class="fal fa-user-circle"></i>
+    </div>
+  }
+
+  <!-- Botão de logout -->
+  <div class="logout-container">
+    <button class="logout-btn" (click)="logout()">
+      <i class="fal fa-sign-out-alt"></i>
+      @if (!isLeftSidebarCollapsed()) {
+        <span class="logout-text">Sair</span>
+      }
+    </button>
   </div>
 </div>

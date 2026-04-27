@@ -46,6 +46,8 @@ export class LoginComponent implements OnInit {
     this.loginService.autenticacao(this.formulario.value).subscribe({
       next: response => {
         localStorage.setItem('token', response.token);
+        localStorage.setItem('nome', response.nome);
+        localStorage.setItem('departamento', response.departamento);
         this.router.navigate(["/dashboard"]);
       },
       error: error => alert('Credenciais inválidas')
