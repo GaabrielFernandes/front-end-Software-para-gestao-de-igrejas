@@ -1,50 +1,66 @@
 <div class="container">
-  <div class="header-container">
-  </div>
-  <div class="card main-card">
-    <div class="table-actions">
-       <app-btn-cadastrar
-            label="Cadastrar Membro"
-            routerLink="/membros/cadastrar">
+  <!-- Card Principal que envolve Título + Ações + Tabela -->
+  <div class="main-surface">
+
+    <!-- Cabeçalho da Seção -->
+    <div class="section-header">
+      <div class="title-wrapper">
+        <div class="icon-box">
+          <i class="pi pi-users"></i> <!-- Ícone que remete a membros -->
+        </div>
+        <div>
+          <h1 class="main-title">Gestão de Membros</h1>
+          <p class="main-subtitle">Visualize e gerencie o cadastro de todos os membros da instituição.</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <app-btn-cadastrar
+          label="Novo Membro"
+          routerLink="/membros/cadastrar"
+          class="btn-primary-action">
         </app-btn-cadastrar>
+      </div>
     </div>
 
+    <hr class="divider">
+    <!-- Tabela Customizada -->
     <p-table
-        [value]="membros"
-        [paginator]="true"
-        [rows]="tamanhoPagina"
-        [totalRecords]="totalRegistros"
-        [lazy]="true"
-        (onLazyLoad)="onPageChange($event)"
-        [responsiveLayout]="'stack'"
-        [rowsPerPageOptions]="[5, 10, 20]"
-        styleClass="p-datatable-striped"
+      [value]="membros"
+      [paginator]="true"
+      [rows]="tamanhoPagina"
+      [totalRecords]="totalRegistros"
+      [lazy]="true"
+      (onLazyLoad)="onPageChange($event)"
+      [rowsPerPageOptions]="[5, 10, 20]"
+      styleClass="p-datatable-sm custom-table"
     >
-        <ng-template pTemplate="header">
-            <tr>
-                <th pSortableColumn="id" style="width:13%"  class="text-xs"><p-sortIcon field="id"/> Código</th>
-                <th pSortableColumn="nomeCompleto"  style="width:30%" class="text-xs"><p-sortIcon field="nomeCompleto"/>Nome Completo</th>
-                <th pSortableColumn="dataBatismo"  style="width:20%" class="text-xs"><p-sortIcon field="dataBatismo"/>Data de Batismo</th>
-                <th pSortableColumn="dataAdmissao"  style="width:20%" class="text-xs"><p-sortIcon field="dataAdmissao"/> Data de Admissão</th>
-                <th style="width:8%"  class="text-xs">Ações</th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-membro>
-            <tr>
-                <td class="text-xs">{{ membro.id }}</td>
-                <td class="text-xs">{{ membro.nomeCompleto }}</td>
-                <td class="text-xs">{{ membro.dataBatismo | date:'dd/MM/yyyy'}}</td>
-                <td class="text-xs">{{ membro.dataAdmissao |date:'dd/MM/yyyy'}}</td>
-                <td class="text-xs"><p-menu #menu [model]="items" [popup]="true" appendTo="body"></p-menu>
-                    <p-button
-                        (onClick)="abrirMenu(menu, $event, membro)"
-                        icon="pi pi-ellipsis-v"
-                        [text]="true"
-                        severity="secondary">
-                    </p-button>
-                </td>
-            </tr>
-        </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="id" style="width:10%">ID</th>
+          <th pSortableColumn="nomeCompleto" style="width:40%">NOME COMPLETO</th>
+          <th pSortableColumn="dataBatismo" style="width:20%">BATISMO</th>
+          <th pSortableColumn="dataAdmissao" style="width:20%">ADMISSÃO</th>
+          <th style="width:10%" class="text-center">GESTÃO</th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-membro>
+        <tr>
+          <td><span class="id-tag">#{{ membro.id }}</span></td>
+          <td>
+            <span class="member-name">{{ membro.nomeCompleto }}</span>
+          </td>
+          <td>{{ membro.dataBatismo | date:'dd/MM/yyyy' }}</td>
+          <td>{{ membro.dataAdmissao | date:'dd/MM/yyyy' }}</td>
+          <td class="text-center">
+            <p-menu #menu [model]="items" [popup]="true" appendTo="body"></p-menu>
+            <button class="btn-dots" (click)="abrirMenu(menu, $event, membro)">
+              <i class="pi pi-ellipsis-h"></i>
+            </button>
+          </td>
+        </tr>
+      </ng-template>
     </p-table>
   </div>
 </div>

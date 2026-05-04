@@ -1,44 +1,135 @@
-
 .container {
-    padding: 40px 20px;
-    position: relative;
+  padding: 2.5rem;
+  background-color: #f8fafc; /* Cor de fundo suave para destacar o card */
+  min-height: 100vh;
 }
 
-.header-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: -20px; /* Faz o ícone sobrepor o card */
-    z-index: 10;
-    position: relative;
-    padding-left: 30px;
+/* O "Card" principal envolvente */
+.main-surface {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px; /* Cantos retos e profissionais */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  padding: 2rem;
 }
 
-.main-card {
-    background: white;
-    padding: 30px 20px 20px 20px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    border: 1px solid #e2e8f0;
+/* Título e Ícone */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
 }
 
-.table-actions {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-bottom: 25px;
-    gap: 12px;
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-/* Ajuste para o botão do menu ficar discreto */
-:host ::v-deep .p-button.p-button-text.p-button-secondary {
-    color: #64748b;
+.icon-box {
+  background: #f1f5f9;
+  color: #1a222c;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 1.5rem;
 }
 
-/* Melhoria visual da tabela */
-:host ::v-deep .p-datatable .p-datatable-thead > tr > th {
-    background: #f8fafc;
-    color: #64748b;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    letter-spacing: 0.05em;
+.main-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.main-subtitle {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin: 4px 0 0 0;
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid #f1f5f9;
+  margin-bottom: 1.5rem;
+}
+
+/* Toolbar de Busca */
+.table-toolbar {
+  margin-bottom: 1.5rem;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 400px;
+}
+
+.search-input input {
+  width: 100%;
+  padding: 0.6rem 1rem 0.6rem 2.5rem;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  font-size: 0.875rem;
+}
+
+/* Estilização da Tabela */
+:host ::v-deep .custom-table .p-datatable-thead > tr > th {
+  background: #ffffff;
+  color: #475569;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  padding: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+:host ::v-deep .custom-table .p-datatable-tbody > tr > td {
+  padding: 1rem;
+  border-bottom: 1px solid #f8fafc;
+  color: #334155;
+  font-size: 0.875rem;
+}
+
+.id-tag {
+  background: #f1f5f9;
+  color: #475569;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-weight: 600;
+}
+
+.member-name {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+/* Botão de Opções */
+.btn-dots {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+
+.btn-dots:hover {
+  background: #f1f5f9;
+  color: #1a222c;
+}
+
+/* Estilo do Botão Primário */
+.btn-primary-action ::v-deep button {
+  background: #1a222c !important; /* Cor idêntica à sidebar */
+  border: none !important;
+  padding: 0.6rem 1.2rem !important;
+  font-size: 0.875rem !important;
+  border-radius: 6px !important;
 }

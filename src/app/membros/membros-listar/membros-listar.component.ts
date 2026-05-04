@@ -10,6 +10,7 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog'
 import { MembrosVisualizarComponent } from '../membros-visualizar/membros-visualizar.component';
 import Swal from 'sweetalert2';
 import {DatePipe} from "@angular/common";
+import {InputText} from "primeng/inputtext";
 
 @Component({
   selector: 'app-membros-listar',
@@ -22,6 +23,7 @@ import {DatePipe} from "@angular/common";
     RouterLink,
     BtnCadastrarComponent,
     DatePipe,
+    InputText,
   ],
   templateUrl: './membros-listar.component.html',
   styleUrl: './membros-listar.component.css'

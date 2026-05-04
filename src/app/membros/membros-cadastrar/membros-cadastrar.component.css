@@ -1,73 +1,148 @@
-
 .container {
-    padding: 40px 20px;
-    position: relative;
+  padding: 2.5rem;
+  background-color: #f8fafc;
+  min-height: 100vh;
 }
 
-.header-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: -20px;
-    z-index: 10;
-    position: relative;
-    padding-left: 30px;
+/* Card Principal (Superfície) */
+.main-surface {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px; /* Cantos retos conforme o pedido na listagem */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
 }
 
-.main-card {
-    background: white;
-    padding: 30px 20px 20px 20px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    border: 1px solid #e2e8f0;
+/* Cabeçalho */
+.section-header {
+  margin-bottom: 1.5rem;
 }
 
-.table-actions {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-bottom: 25px;
-    gap: 12px;
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon-box {
+  background: #f1f5f9;
+  color: #1a222c;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 1.5rem;
+}
+
+.main-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.main-subtitle {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin: 4px 0 0 0;
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid #f1f5f9;
+  margin-bottom: 1.5rem;
+}
+
+/* Estilização das Tabs do PrimeNG */
+:host ::v-deep .p-tablist-tab {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+:host ::v-deep .p-tablist-active-bar {
+  background: #1a222c;
+}
+
+:host ::v-deep .p-tablist-tab.p-tablist-active {
+  color: #1a222c;
+}
+
+/* Ajustes nos inputs para fluidez */
+:host ::v-deep .p-inputtext,
+:host ::v-deep .p-select,
+:host ::v-deep .p-datepicker {
+  border-radius: 6px;
+  border-color: #e2e8f0;
+}
+
+:host ::v-deep .p-floatlabel label {
+  color: #94a3b8;
+}
+
+.error-text {
+  color: #ef4444;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+/* Rodapé de Botões */
+.form-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #f1f5f9;
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-
-  padding: 0.6rem 1.2rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 6px;
   border: none;
-
-  font-size: 0.95rem;
+  font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
-
-  transition: background-color 0.2s ease, transform 0.05s ease;
+  transition: all 0.2s ease;
 }
 
-.btn:active {  
-  transform: scale(0.97);
-}
-
-/* 🟢 SALVAR */
 .btn-salvar {
-  background-color: #22C55E;
+  background-color: #1a222c; /* Cor da sidebar para salvar */
   color: #ffffff;
 }
 
 .btn-salvar:hover {
-  background-color: #16A34A;
+  background-color: #2d3748;
+  transform: translateY(-1px);
 }
 
-/* 🔴 CANCELAR */
 .btn-cancelar {
-  background-color: #ef4444;
-  color: #ffffff;
+  background-color: #fef2f2; /* Fundo vermelho ultra suave */
+  color: #991b1b; /* Texto em vinho para contraste legível */
+  border: 1px solid #fee2e2; /* Borda sutil */
 }
 
 .btn-cancelar:hover {
-  background-color: #dc2626;
+  background-color: #fee2e2; /* Escurece levemente no hover */
+  color: #7f1d1d;
+  border-color: #fecaca;
+  transform: translateY(-1px);
 }
 
+/* Caso prefira o botão preenchido (mais tradicional) */
+.btn-cancelar-solid {
+  background-color: #dc2626;
+  color: #ffffff;
+  border: none;
+}
 
-
+.btn-cancelar-solid:hover {
+  background-color: #b91c1c;
+  box-shadow: 0 4px 6px -1px rgba(220, 38, 38, 0.2);
+}
