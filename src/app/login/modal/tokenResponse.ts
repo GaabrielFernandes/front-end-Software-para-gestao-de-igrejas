@@ -4,4 +4,5 @@ export interface TokenResponse {
   tipo: string;
   email: string;
   departamento: string;
+  senhaProvisoria: boolean;
 }

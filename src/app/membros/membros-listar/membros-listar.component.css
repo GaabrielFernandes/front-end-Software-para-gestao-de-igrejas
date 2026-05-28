@@ -109,15 +109,18 @@
   color: #1e293b;
 }
 
-/* Botão de Opções */
 .btn-dots {
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 6px;
   background: transparent;
-  border: none;
-  color: #94a3b8;
+  color: #64748b;
   cursor: pointer;
-  padding: 8px;
-  border-radius: 4px;
-  transition: 0.2s;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .btn-dots:hover {
@@ -125,11 +128,109 @@
   color: #1a222c;
 }
 
-/* Estilo do Botão Primário */
-.btn-primary-action ::v-deep button {
-  background: #1a222c !important; /* Cor idêntica à sidebar */
-  border: none !important;
-  padding: 0.6rem 1.2rem !important;
-  font-size: 0.875rem !important;
-  border-radius: 6px !important;
+:host ::v-deep .custom-table .p-datatable-wrapper {
+  overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .main-surface {
+    padding: 1.25rem;
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .header-actions,
+  .header-actions .btn {
+    width: 100%;
+  }
+
+  .title-wrapper {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.75rem;
+  }
+
+  .main-surface {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  :host ::v-deep .custom-table .p-datatable-wrapper {
+    overflow-x: visible;
+  }
+
+  :host ::v-deep .custom-table table,
+  :host ::v-deep .custom-table .p-datatable-thead,
+  :host ::v-deep .custom-table .p-datatable-tbody,
+  :host ::v-deep .custom-table .p-datatable-tbody > tr {
+    display: block;
+    width: 100%;
+    min-width: 0 !important;
+  }
+
+  :host ::v-deep .custom-table .p-datatable-thead {
+    display: none;
+  }
+
+  :host ::v-deep .custom-table .p-datatable-tbody > tr {
+    margin-bottom: 0.875rem;
+    padding: 0.875rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+  }
+
+  :host ::v-deep .custom-table .p-datatable-tbody > tr > td {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.625rem 0;
+    border-bottom: 1px solid #f1f5f9;
+    text-align: right !important;
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+
+  :host ::v-deep .custom-table .p-datatable-tbody > tr > td:last-child {
+    border-bottom: 0;
+  }
+
+  :host ::v-deep .custom-table .p-datatable-tbody > tr > td::before {
+    content: attr(data-label);
+    flex: 0 0 6.5rem;
+    color: #64748b;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.025em;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  :host ::v-deep .custom-table .p-datatable-tbody > tr > td[colspan] {
+    justify-content: center;
+    text-align: center !important;
+  }
+
+  :host ::v-deep .custom-table .p-datatable-tbody > tr > td[colspan]::before {
+    content: none;
+  }
+
+  .member-name {
+    text-align: right;
+  }
 }

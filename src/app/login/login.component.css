@@ -9,6 +9,7 @@
   margin: 0;
   padding: 20px;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 /* Card Principal */
@@ -96,4 +97,35 @@
 @media (max-width: 850px) {
   .login-image-side { display: none; }
   .login-card { max-width: 450px; }
+}
+
+@media (max-width: 480px) {
+  .login-wrapper {
+    align-items: flex-start;
+    padding: 0;
+    background: #ffffff;
+  }
+
+  .login-card {
+    min-height: 100vh;
+    max-width: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .login-form-side {
+    padding: 2rem 1.25rem;
+  }
+
+  .login-content {
+    max-width: none;
+  }
+
+  .login-title {
+    font-size: 1.25rem;
+  }
+
+  .quote-text {
+    font-size: 1rem;
+  }
 }

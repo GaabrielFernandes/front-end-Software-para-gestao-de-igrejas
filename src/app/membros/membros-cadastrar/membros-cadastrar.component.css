@@ -99,29 +99,6 @@
   border-top: 1px solid #f1f5f9;
 }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: 6px;
-  border: none;
-  font-size: 0.875rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.btn-salvar {
-  background-color: #1a222c; /* Cor da sidebar para salvar */
-  color: #ffffff;
-}
-
-.btn-salvar:hover {
-  background-color: #2d3748;
-  transform: translateY(-1px);
-}
-
 .btn-cancelar {
   background-color: #fef2f2; /* Fundo vermelho ultra suave */
   color: #991b1b; /* Texto em vinho para contraste legível */
@@ -145,4 +122,39 @@
 .btn-cancelar-solid:hover {
   background-color: #b91c1c;
   box-shadow: 0 4px 6px -1px rgba(220, 38, 38, 0.2);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .main-surface {
+    padding: 1.25rem;
+  }
+
+  .title-wrapper {
+    align-items: flex-start;
+  }
+
+  .form-footer {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .form-footer .btn {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.75rem;
+  }
+
+  .main-surface {
+    padding: 1rem;
+  }
 }

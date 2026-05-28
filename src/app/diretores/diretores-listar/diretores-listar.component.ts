@@ -1,25 +1,19 @@
-import {Component, OnInit} from '@angular/core';
-import {BtnCadastrarComponent} from "../../shared/btn-cadastrar/btn-cadastrar.component";
-import {Button} from "primeng/button";
-import {DatePipe} from "@angular/common";
-import {Menu} from "primeng/menu";
-import {MenuItem, PrimeIcons, PrimeTemplate} from "primeng/api";
-import {Router, RouterLink} from "@angular/router";
-import {TableModule} from "primeng/table";
-import {MembroPage, MembroService} from "../../membros/membro.service";
-import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
-import {MembrosVisualizarComponent} from "../../membros/membros-visualizar/membros-visualizar.component";
+import { Component, OnInit } from '@angular/core';
+import { Menu } from "primeng/menu";
+import { MenuItem, PrimeIcons, PrimeTemplate } from "primeng/api";
+import { Router, RouterLink } from "@angular/router";
+import { TableModule } from "primeng/table";
+import { DialogService, DynamicDialogRef } from "primeng/dynamicdialog";
 import Swal from "sweetalert2";
-import {DiretorPage} from "../../membros/modal/diretorPage";
-import {DiretorService} from "../diretor.service";
+import { DiretorPage } from "../diretor.modal";
+import { DiretorService } from "../diretor.service";
+import { DiretoresVisualizarComponent } from "../diretores-visualizar/diretores-visualizar.component";
 
 @Component({
   selector: 'app-diretores-listar',
   standalone: true,
   providers: [DialogService],
   imports: [
-    BtnCadastrarComponent,
-    Button,
     Menu,
     PrimeTemplate,
     RouterLink,
@@ -29,113 +23,151 @@ import {DiretorService} from "../diretor.service";
   styleUrl: './diretores-listar.component.css'
 })
 export class DiretoresListarComponent implements OnInit {
-  diretor: DiretorPage[] = []
-  diretorSelecionado!: DiretorPage
-  items: MenuItem[] | undefined;
+  diretores: DiretorPage[] = [];
+  diretorSelecionado?: DiretorPage;
+  items: MenuItem[] = [];
+
   totalRegistros = 0;
   paginaAtual = 0;
   tamanhoPagina = 5;
-  ref!: DynamicDialogRef
 
-  ngOnInit(): void {
-    this.populaMenu();
-    this.listarMembros();
-  }
+  ref?: DynamicDialogRef;
+  carregando = false;
 
   constructor(
     private diretorService: DiretorService,
     private router: Router,
     private dialogService: DialogService
-  ) {
+  ) { }
 
+  ngOnInit(): void {
+    this.populaMenu();
   }
 
-  abrirMenu(menu: any, event: Event, membro: MembroPage) {
-    this.diretorSelecionado = membro
-    menu.toggle(event)
+  abrirMenu(menu: Menu, event: Event, diretor: DiretorPage): void {
+    this.diretorSelecionado = diretor;
+    menu.toggle(event);
   }
 
-  populaMenu() {
+  onPageChange(event: any): void {
+    const first = event.first ?? 0;
+    const rows = event.rows ?? this.tamanhoPagina;
+
+    this.paginaAtual = Math.floor(first / rows);
+    this.tamanhoPagina = rows;
+
+    this.listarDiretores();
+  }
+
+  private populaMenu(): void {
     this.items = [
       {
         label: 'Editar',
         icon: PrimeIcons.PENCIL,
-        command: () => {
-          this.router.navigate(['/membros/cadastrar', this.diretorSelecionado.id])
-        }
+        command: () => this.editarDiretor()
       },
       {
         label: 'Excluir',
         icon: PrimeIcons.TRASH,
-        command: () => {
-          this.excluir(this.diretorSelecionado.id)
-        }
+        command: () => this.confirmarExclusao()
       },
       {
         label: 'Visualizar',
         icon: PrimeIcons.EYE,
-        command: () => {
-          this.abriModalVisualizar(this.diretorSelecionado.id)
-        }
+        command: () => this.abrirModalVisualizar()
       }
-    ]
+    ];
   }
 
-  private listarMembros(): void {
-    this.diretorService.listar(this.paginaAtual, this.tamanhoPagina).subscribe(resposta => {
-      this.diretor = resposta.content
-      this.totalRegistros = resposta.totalElements
+  private listarDiretores(): void {
+    this.carregando = true;
+
+    this.diretorService.listar(this.paginaAtual, this.tamanhoPagina).subscribe({
+      next: (resposta) => {
+        this.diretores = resposta.content;
+        this.totalRegistros = resposta.totalElements;
+      },
+      error: (error) => {
+        console.error('Erro ao listar diretores:', error);
+
+        Swal.fire({
+          title: 'Erro ao listar diretores',
+          text: error?.error?.message || error?.message || 'Não foi possível carregar os diretores.',
+          icon: 'error'
+        });
+      },
+      complete: () => {
+        this.carregando = false;
+      }
     });
   }
 
+  private editarDiretor(): void {
+    if (!this.diretorSelecionado?.id) {
+      return;
+    }
 
-  onPageChange(event: any): void {
-    this.paginaAtual = event.page;
-    this.tamanhoPagina = event.rows;
-    this.listarMembros();
+    this.router.navigate(['/diretores/editar', this.diretorSelecionado.id]);
   }
 
-  private abriModalVisualizar(id: any) {
-    this.ref = this.dialogService.open(MembrosVisualizarComponent, {
+  private abrirModalVisualizar(): void {
+    if (!this.diretorSelecionado?.id) {
+      return;
+    }
+
+    this.ref = this.dialogService.open(DiretoresVisualizarComponent, {
       header: 'Visualizar',
-      width: '70%',
+      width: '60%',
       modal: true,
       closable: true,
-      maximizable:true,
+      maximizable: true,
       data: {
-        id
+        id: this.diretorSelecionado.id
       }
-    })
+    });
   }
 
-  private excluir(id:any) {
+  private confirmarExclusao(): void {
+    if (!this.diretorSelecionado?.id) {
+      return;
+    }
+
+    const id = this.diretorSelecionado.id;
+
     Swal.fire({
-      title: 'Deseja excluir esse membro ?',
-      text: 'Essa ação tem efeito permanente',
+      title: 'Deseja excluir esse diretor?',
+      text: 'Essa ação tem efeito permanente.',
       icon: 'warning',
-      showCancelButton:true,
+      showCancelButton: true,
       confirmButtonText: 'Sim, excluir',
       cancelButtonText: 'Não, cancelar',
-    }).then((resultado: any) => {
+    }).then((resultado) => {
       if (resultado.isConfirmed) {
-        this.diretorService.excluirMembro(id).subscribe({
-          next: () => {
-            Swal.fire({
-              title: 'Membro excluido com sucesso',
-              text: `Código: ${id}`,
-              icon: 'success',
-            })
-            this.listarMembros();
-          },
-          error:(error) =>{
-            Swal.fire({
-              title: 'Erro ao excluir membro',
-              text: error.message,
-              icon: 'error',
-            })
-          }
-        })
+        this.excluir(id);
       }
-    })
+    });
+  }
+
+  private excluir(id: number): void {
+    this.diretorService.excluirDiretor(id).subscribe({
+      next: () => {
+        Swal.fire({
+          title: 'Diretor excluído com sucesso',
+          text: `Código: ${id}`,
+          icon: 'success',
+        });
+
+        this.listarDiretores();
+      },
+      error: (error) => {
+        console.error('Erro ao excluir diretor:', error);
+
+        Swal.fire({
+          title: 'Erro ao excluir diretor',
+          text: error?.error?.message || error?.message || 'Não foi possível excluir o diretor.',
+          icon: 'error',
+        });
+      }
+    });
   }
 }

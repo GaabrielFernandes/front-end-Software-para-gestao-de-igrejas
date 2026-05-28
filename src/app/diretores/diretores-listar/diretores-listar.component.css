@@ -1,44 +1,215 @@
-
 .container {
-  padding: 40px 20px;
-  position: relative;
+  padding: 2.5rem;
+  background-color: #f8fafc;
+  min-height: 100vh;
 }
 
-.header-container {
-  display: flex;
-  align-items: center;
-  margin-bottom: -20px; /* Faz o ícone sobrepor o card */
-  z-index: 10;
-  position: relative;
-  padding-left: 30px;
-}
-
-.main-card {
-  background: white;
-  padding: 30px 20px 20px 20px;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+.main-surface {
+  background: #ffffff;
   border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  padding: 2rem;
 }
 
-.table-actions {
+.section-header {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.title-wrapper {
+  display: flex;
   align-items: center;
-  margin-bottom: 25px;
-  gap: 12px;
+  gap: 1rem;
 }
 
-/* Ajuste para o botão do menu ficar discreto */
-:host ::v-deep .p-button.p-button-text.p-button-secondary {
-  color: #64748b;
+.icon-box {
+  background: #f1f5f9;
+  color: #1a222c;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 1.5rem;
 }
 
-/* Melhoria visual da tabela */
-:host ::v-deep .p-datatable .p-datatable-thead > tr > th {
-  background: #f8fafc;
+.main-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.main-subtitle {
+  font-size: 0.875rem;
   color: #64748b;
-  text-transform: uppercase;
+  margin: 4px 0 0 0;
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid #f1f5f9;
+  margin-bottom: 1.5rem;
+}
+
+:host ::v-deep .custom-table .p-datatable-thead > tr > th {
+  background: #ffffff;
+  color: #475569;
   font-size: 0.75rem;
-  letter-spacing: 0.05em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  padding: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+:host ::v-deep .custom-table .p-datatable-tbody > tr > td {
+  padding: 1rem;
+  border-bottom: 1px solid #f8fafc;
+  color: #334155;
+  font-size: 0.875rem;
+}
+
+.id-tag {
+  background: #f1f5f9;
+  color: #475569;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-weight: 600;
+}
+
+.director-name {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.btn-dots {
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-dots:hover {
+  background: #f1f5f9;
+  color: #1a222c;
+}
+
+:host ::v-deep .custom-table .p-datatable-wrapper {
+  overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .main-surface {
+    padding: 1.25rem;
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .header-actions,
+  .header-actions .btn {
+    width: 100%;
+  }
+
+  .title-wrapper {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.75rem;
+  }
+
+  .main-surface {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  :host ::v-deep .custom-table .p-datatable-wrapper {
+    overflow-x: visible;
+  }
+
+  :host ::v-deep .custom-table table,
+  :host ::v-deep .custom-table .p-datatable-thead,
+  :host ::v-deep .custom-table .p-datatable-tbody,
+  :host ::v-deep .custom-table .p-datatable-tbody > tr {
+    display: block;
+    width: 100%;
+    min-width: 0 !important;
+  }
+
+  :host ::v-deep .custom-table .p-datatable-thead {
+    display: none;
+  }
+
+  :host ::v-deep .custom-table .p-datatable-tbody > tr {
+    margin-bottom: 0.875rem;
+    padding: 0.875rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+  }
+
+  :host ::v-deep .custom-table .p-datatable-tbody > tr > td {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.625rem 0;
+    border-bottom: 1px solid #f1f5f9;
+    text-align: right !important;
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+
+  :host ::v-deep .custom-table .p-datatable-tbody > tr > td:last-child {
+    border-bottom: 0;
+  }
+
+  :host ::v-deep .custom-table .p-datatable-tbody > tr > td::before {
+    content: attr(data-label);
+    flex: 0 0 6.5rem;
+    color: #64748b;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.025em;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  :host ::v-deep .custom-table .p-datatable-tbody > tr > td[colspan] {
+    justify-content: center;
+    text-align: center !important;
+  }
+
+  :host ::v-deep .custom-table .p-datatable-tbody > tr > td[colspan]::before {
+    content: none;
+  }
+
+  .director-name {
+    text-align: right;
+  }
 }

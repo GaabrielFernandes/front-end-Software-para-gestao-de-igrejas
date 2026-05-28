@@ -1,0 +1,69 @@
+<div class="view-container p-6 animate-fade-in">
+  <div class="flex items-center justify-between mb-8 pb-4 border-b border-gray-100">
+    <div class="flex items-center space-x-4">
+      <div class="avatar-circle shadow-lg flex items-center justify-center text-white text-2xl font-bold">
+        {{ diretor?.nome?.charAt(0) || 'D' }}
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold text-gray-800">{{ diretor?.nome || 'Nao informado' }}</h2>
+        <div class="flex gap-2 mt-1">
+          <span class="badge shadow-sm flex items-center gap-2" [ngClass]="'status-' + diretor?.departamento">
+            <i class="pi pi-id-card"></i>
+            {{ departamentoLabel }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-12 gap-6">
+    <div class="col-span-8 card-modern shadow-sm p-6">
+      <h3 class="section-title"><i class="pi pi-user mr-2 text-blue-500"></i> Dados do Diretor</h3>
+      <div class="grid grid-cols-2 gap-6 mt-4">
+        <div class="info-group">
+          <label>Codigo</label>
+          <p>#{{ id }}</p>
+        </div>
+        <div class="info-group">
+          <label>Nome</label>
+          <p>{{ diretor?.nome || 'Nao informado' }}</p>
+        </div>
+        <div class="info-group">
+          <label>Departamento</label>
+          <p>{{ departamentoLabel }}</p>
+        </div>
+        <div class="info-group">
+          <label>Perfil de Acesso</label>
+          <p>{{ diretor?.departamento ? 'ROLE_' + diretor?.departamento : 'Nao informado' }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-span-4 card-modern shadow-sm p-6 accent-border">
+      <h3 class="section-title"><i class="pi pi-envelope mr-2 text-blue-600"></i> Contato</h3>
+      <div class="space-y-4 mt-4">
+        <div class="contact-item">
+          <i class="pi pi-at text-blue-500 text-xl"></i>
+          <div class="truncate">
+            <label>E-mail</label>
+            <p class="truncate">{{ diretor?.email || 'Nao informado' }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-span-12 card-modern shadow-sm p-6">
+      <h3 class="section-title"><i class="pi pi-shield mr-2 text-green-600"></i> Permissao</h3>
+      <div class="grid grid-cols-3 gap-6 mt-4">
+        <div class="info-group">
+          <label>Status</label>
+          <p>Ativo</p>
+        </div>
+        <div class="info-group col-span-2">
+          <label>Departamento vinculado</label>
+          <p>{{ departamentoLabel }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

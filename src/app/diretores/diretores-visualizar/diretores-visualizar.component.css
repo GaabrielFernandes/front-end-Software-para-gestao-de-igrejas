@@ -1,7 +1,7 @@
 .card-modern {
   background: #ffffff;
   border-radius: 16px;
-  border: 1px solid rgba(0,0,0,0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   transition: transform 0.2s;
 }
 
@@ -24,11 +24,33 @@
     text-transform: uppercase;
     margin-bottom: 2px;
   }
+
   p {
     font-size: 1rem;
     color: #1f2937;
     font-weight: 500;
   }
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.contact-item label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.contact-item p {
+  font-size: 1rem;
+  color: #1f2937;
+  font-weight: 500;
 }
 
 .avatar-circle {
@@ -44,9 +66,22 @@
   font-size: 0.75rem;
   font-weight: 700;
   color: white;
+}
 
-  &.bg-success { background-color: #10b981; }
-  &.bg-danger { background-color: #ef4444; }
+.badge i {
+  font-size: 0.8rem;
+}
+
+.status-SECRETARIA {
+  background-color: #2563eb;
+}
+
+.status-TESOURARIA {
+  background-color: #10b981;
+}
+
+.status-CONSELHO_FISCAL {
+  background-color: #f59e0b;
 }
 
 .accent-border {
@@ -55,31 +90,6 @@
 
 .animate-fade-in {
   animation: fadeIn 0.5s ease-in-out;
-}
-
-/* Cores para os badges de status */
-.status-ATIVO {
-  background-color: #10b981; /* Verde Sucesso */
-}
-
-.status-CONGREGADO {
-  background-color: #3b82f6; /* Azul Primário */
-}
-
-.status-CRIANCA {
-  background-color: #f59e0b; /* Âmbar/Laranja */
-}
-
-.status-REMOVIDO {
-  background-color: #64748b; /* Cinza/Ardósia */
-}
-
-.status-EM_DISCIPLINA {
-  background-color: #ef4444; /* Vermelho Erro */
-}
-
-.badge i {
-  font-size: 0.8rem;
 }
 
 @keyframes fadeIn {
@@ -111,7 +121,8 @@
     padding: 1rem !important;
   }
 
-  .info-group p {
+  .info-group p,
+  .contact-item p {
     font-size: 0.9rem;
     overflow-wrap: anywhere;
   }

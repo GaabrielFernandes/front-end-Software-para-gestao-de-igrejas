@@ -68,3 +68,42 @@
     </div>
   </div>
 </div>
+
+<nav class="mobile-nav" aria-label="Navegacao principal">
+  <a
+    class="mobile-nav-link"
+    routerLink="/dashboard"
+    routerLinkActive="mobile-active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <i class="fal fa-chart-line"></i>
+    <span>Inicio</span>
+  </a>
+
+  @if (isSecretaria()) {
+    <a
+      class="mobile-nav-link"
+      routerLink="/membros"
+      routerLinkActive="mobile-active"
+    >
+      <i class="fal fa-users"></i>
+      <span>Membros</span>
+    </a>
+  }
+
+  @if (isAdministrador()) {
+    <a
+      class="mobile-nav-link"
+      routerLink="/diretores"
+      routerLinkActive="mobile-active"
+    >
+      <i class="fal fa-user"></i>
+      <span>Diretores</span>
+    </a>
+  }
+
+  <button type="button" class="mobile-nav-link" (click)="logout()">
+    <i class="fal fa-sign-out-alt"></i>
+    <span>Sair</span>
+  </button>
+</nav>

@@ -1,49 +1,85 @@
 <div class="container">
-  <div class="card main-card">
-    <div class="table-actions">
-      <app-btn-cadastrar
-        label="Cadastrar Diretor"
-        routerLink="/diretores/cadastrar">
-      </app-btn-cadastrar>
+  <div class="main-surface">
+    <div class="section-header">
+      <div class="title-wrapper">
+        <div class="icon-box">
+          <i class="pi pi-briefcase"></i>
+        </div>
+
+        <div>
+          <h1 class="main-title">Gestão de Diretores</h1>
+          <p class="main-subtitle">
+            Visualize e gerencie o cadastro de todos os diretores da instituição.
+          </p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button type="button" routerLink="/diretores/cadastrar" class="btn btn-salvar">
+          <i class="pi pi-plus-circle"></i>
+          Novo Diretor
+        </button>
+      </div>
     </div>
 
+    <hr class="divider">
+
     <p-table
-      [value]="diretor"
+      [value]="diretores"
       [paginator]="true"
       [rows]="tamanhoPagina"
       [totalRecords]="totalRegistros"
       [lazy]="true"
+      [loading]="carregando"
       (onLazyLoad)="onPageChange($event)"
-      [responsiveLayout]="'stack'"
       [rowsPerPageOptions]="[5, 10, 20]"
-      styleClass="p-datatable-striped"
+      styleClass="p-datatable-sm custom-table"
     >
       <ng-template pTemplate="header">
         <tr>
-          <th pSortableColumn="id" style="width:13%"  class="text-xs"><p-sortIcon field="id"/> Código</th>
-          <th pSortableColumn="nomeCompleto"  style="width:30%" class="text-xs"><p-sortIcon field="nomeCompleto"/>Nome</th>
-          <th pSortableColumn="dataBatismo"  style="width:20%" class="text-xs"><p-sortIcon field="dataBatismo"/>Email</th>
-          <th pSortableColumn="dataAdmissao"  style="width:20%" class="text-xs"><p-sortIcon field="dataAdmissao"/>Departamento</th>
-          <th style="width:8%"  class="text-xs">Ações</th>
+          <th pSortableColumn="id" style="width:10%">ID</th>
+          <th pSortableColumn="nome" style="width:30%">NOME</th>
+          <th pSortableColumn="email" style="width:30%">EMAIL</th>
+          <th pSortableColumn="departamento" style="width:20%">DEPARTAMENTO</th>
+          <th style="width:10%" class="text-center">GESTÃO</th>
         </tr>
       </ng-template>
+
       <ng-template pTemplate="body" let-diretor>
         <tr>
-          <td class="text-xs">{{ diretor.id }}</td>
-          <td class="text-xs">{{ diretor.nome }}</td>
-          <td class="text-xs">{{ diretor.email}}</td>
-          <td class="text-xs">{{ diretor.departamento}}</td>
-          <td class="text-xs"><p-menu #menu [model]="items" [popup]="true" appendTo="body"></p-menu>
-            <p-button
-              (onClick)="abrirMenu(menu, $event, diretor)"
-              icon="pi pi-ellipsis-v"
-              [text]="true"
-              severity="secondary">
-            </p-button>
+          <td data-label="ID">
+            <span class="id-tag">#{{ diretor.id }}</span>
+          </td>
+
+          <td data-label="Nome">
+            <span class="director-name">{{ diretor.nome }}</span>
+          </td>
+
+          <td data-label="Email">{{ diretor.email }}</td>
+
+          <td data-label="Departamento">{{ diretor.departamento }}</td>
+
+          <td data-label="Gestao" class="text-center">
+            <p-menu #menu [model]="items" [popup]="true" appendTo="body"></p-menu>
+
+            <button
+              type="button"
+              class="btn-dots"
+              (click)="abrirMenu(menu, $event, diretor)"
+            >
+              <i class="pi pi-ellipsis-h"></i>
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="5" class="text-center">
+            Nenhum diretor encontrado.
           </td>
         </tr>
       </ng-template>
     </p-table>
   </div>
 </div>
-

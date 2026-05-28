@@ -15,11 +15,10 @@
       </div>
 
       <div class="header-actions">
-        <app-btn-cadastrar
-          label="Novo Membro"
-          routerLink="/membros/cadastrar"
-          class="btn-primary-action">
-        </app-btn-cadastrar>
+        <button type="button" routerLink="/membros/cadastrar" class="btn btn-salvar">
+          <i class="pi pi-plus-circle"></i>
+          Novo Membro
+        </button>
       </div>
     </div>
 
@@ -47,13 +46,13 @@
 
       <ng-template pTemplate="body" let-membro>
         <tr>
-          <td><span class="id-tag">#{{ membro.id }}</span></td>
-          <td>
+          <td data-label="ID"><span class="id-tag">#{{ membro.id }}</span></td>
+          <td data-label="Nome">
             <span class="member-name">{{ membro.nomeCompleto }}</span>
           </td>
-          <td>{{ membro.dataBatismo | date:'dd/MM/yyyy' }}</td>
-          <td>{{ membro.dataAdmissao | date:'dd/MM/yyyy' }}</td>
-          <td class="text-center">
+          <td data-label="Batismo">{{ membro.dataBatismo | date:'dd/MM/yyyy' }}</td>
+          <td data-label="Admissao">{{ membro.dataAdmissao | date:'dd/MM/yyyy' }}</td>
+          <td data-label="Gestao" class="text-center">
             <p-menu #menu [model]="items" [popup]="true" appendTo="body"></p-menu>
             <button class="btn-dots" (click)="abrirMenu(menu, $event, membro)">
               <i class="pi pi-ellipsis-h"></i>

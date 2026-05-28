@@ -26,7 +26,7 @@ export class MembroService {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${localStorage.getItem('token')}`
     });
-    return this.http.post<Membro>(this.baseUrl, payload, {headers : meusHeaders})
+    return this.http.post<Membro>(`${this.baseUrl}/salvar`, payload, {headers : meusHeaders})
   }
 
   listar(page:number, size:number):Observable<Page<MembroPage>>{

@@ -1,0 +1,355 @@
+.dashboard-wrapper {
+  background-color: #f8fafc;
+  min-height: 100vh;
+  padding: 1.5rem 2.5rem;
+  font-family: 'Inter', sans-serif;
+  min-width: 0;
+}
+
+/* Header */
+.dashboard-header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.title-group h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.subtitle {
+  color: #64748b;
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.date-badge {
+  background: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #475569;
+  font-weight: 500;
+}
+
+/* Stats Cards */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+}
+
+.stat-card:hover { transform: translateY(-4px); }
+
+.icon-box {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+
+.blue { background: #eff6ff; color: #3b82f6; }
+.green { background: #f0fdf4; color: #22c55e; }
+.gold { background: #fffbeb; color: #d4af37; }
+
+.value { font-size: 1.85rem; font-weight: 700; color: #0f172a; margin: 0.2rem 0; }
+.label { color: #64748b; font-size: 0.85rem; font-weight: 500; }
+.trend { font-size: 0.8rem; font-weight: 600; color: #22c55e; }
+.sub-label { font-size: 0.8rem; color: #94a3b8; }
+
+/* Layout de Conteúdo */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .content-grid { grid-template-columns: 1fr; }
+}
+
+.card-glass {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  min-width: 0;
+}
+
+.chart-container {
+  position: relative;
+  height: 280px;
+  margin-top: 1rem;
+}
+
+/* Tabela */
+.modern-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.modern-table th {
+  text-align: left;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.modern-table td {
+  padding: 1rem 0;
+  border-bottom: 1px solid #f8fafc;
+  font-size: 0.9rem;
+}
+
+.badge {
+  padding: 0.3rem 0.7rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.active { background: #dcfce7; color: #15803d; }
+.discipline { background: #fef3c7; color: #b45309; }
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+/* ... (Estilos anteriores permanecem iguais) ... */
+
+.birthday-section {
+  margin-top: 2rem;
+}
+
+.birthday-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.birthday-item {
+  background: #fdfcfb;
+  border: 1px solid #f1f5f9;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 200px;
+  flex: 1 1 calc(20% - 1rem); /* Tenta colocar 5 por linha */
+  transition: all 0.2s;
+}
+
+.birthday-item:hover {
+  background: #fffbeb;
+  border-color: #fef3c7;
+  transform: translateY(-2px);
+}
+
+.user-avatar-small {
+  width: 32px;
+  height: 32px;
+  background: #e2e8f0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.8rem;
+  color: #475569;
+}
+
+.niver-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.niver-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.niver-date {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.btn-text {
+  background: none;
+  border: 1px solid #e2e8f0;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: 0.2s;
+}
+
+.btn-text:hover { background-color: #f1f5f9; }
+
+@media (max-width: 768px) {
+  .dashboard-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .title-group h1 {
+    font-size: 1.35rem;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+  }
+
+  .header-info,
+  .date-badge {
+    width: 100%;
+  }
+
+  .date-badge {
+    justify-content: center;
+  }
+
+  .stats-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .stat-card {
+    padding: 1.1rem;
+  }
+
+  .content-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .table-section {
+    overflow-x: auto;
+  }
+
+  .modern-table {
+    min-width: 520px;
+  }
+
+  .birthday-item {
+    flex-basis: 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-card {
+    align-items: flex-start;
+  }
+
+  .icon-box {
+    flex: 0 0 44px;
+  }
+
+  .value {
+    font-size: 1.45rem;
+  }
+
+  .chart-container {
+    height: 240px;
+  }
+}
+
+@media (max-width: 640px) {
+  .table-section {
+    overflow-x: visible;
+  }
+
+  .modern-table,
+  .modern-table thead,
+  .modern-table tbody,
+  .modern-table tr {
+    display: block;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .modern-table thead {
+    display: none;
+  }
+
+  .modern-table tbody tr {
+    padding: 0.875rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background: #ffffff;
+  }
+
+  .modern-table tbody tr + tr {
+    margin-top: 0.875rem;
+  }
+
+  .modern-table td {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.625rem 0;
+    border-bottom: 1px solid #f1f5f9;
+    text-align: right;
+    overflow-wrap: anywhere;
+  }
+
+  .modern-table td:last-child {
+    border-bottom: 0;
+  }
+
+  .modern-table td::before {
+    content: attr(data-label);
+    flex: 0 0 6.5rem;
+    color: #64748b;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.025em;
+    text-align: left;
+    text-transform: uppercase;
+  }
+}

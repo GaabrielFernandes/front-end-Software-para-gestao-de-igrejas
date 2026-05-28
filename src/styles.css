@@ -9,6 +9,12 @@
   box-sizing: border-box;
 }
 
+html {
+  width: 100%;
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
 body {
   position: relative;
   /* Substituindo Roboto por Inter */
@@ -20,6 +26,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   color: #334155; /* Um tom de cinza escuro azulado, melhor que o preto puro */
+  min-width: 320px;
+  overflow-x: hidden;
 }
 
 /* Garante que componentes de formulário e botões usem a fonte correta */
@@ -28,6 +36,63 @@ input, button, select, textarea {
 }
 
 /* Dica para sua tabela: deixa os números alinhados verticalmente */
+form,
+.form-body,
+.form-panel,
+p-tabs,
+.p-tabs,
+p-tabpanels,
+.p-tabpanels,
+p-tabpanel,
+.p-tabpanel {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+form .grid {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+form [class*="col-span"] {
+  min-width: 0;
+  max-width: 100%;
+}
+
+form p-floatlabel,
+form p-float-label,
+form .p-floatlabel,
+form .p-float-label {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+form .p-inputtext,
+form .p-password,
+form .p-password-input,
+form .p-select,
+form .p-datepicker,
+form .p-textarea,
+form textarea[pTextarea] {
+  width: 100% !important;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+form .p-inputwrapper,
+form .p-password,
+form .p-select,
+form .p-datepicker {
+  display: flex;
+}
+
 table {
   font-variant-numeric: tabular-nums;
 }
@@ -44,4 +109,191 @@ table {
 
 .mensagem-erro i {
   font-size: 1.1rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-salvar {
+  background-color: #1a222c; /* Cor da sidebar para salvar */
+  color: #ffffff;
+}
+
+.btn-salvar:hover {
+  background-color: #2d3748;
+  transform: translateY(-1px);
+}
+
+.p-dialog {
+  max-width: calc(100vw - 2rem);
+}
+
+.p-dialog-content {
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .container,
+  .dashboard-wrapper,
+  .view-container {
+    padding: 1rem !important;
+  }
+
+  .main-surface,
+  .card-glass,
+  .card-modern {
+    padding: 1.25rem !important;
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .title-wrapper {
+    align-items: flex-start;
+  }
+
+  .main-title {
+    font-size: 1.125rem !important;
+  }
+
+  .main-subtitle {
+    font-size: 0.8125rem !important;
+  }
+
+  .header-actions,
+  .header-actions .btn,
+  .form-footer .btn,
+  .form-footer a,
+  .form-footer button {
+    width: 100%;
+  }
+
+  .btn {
+    justify-content: center;
+    min-height: 44px;
+  }
+
+  .p-dialog {
+    width: calc(100vw - 1rem) !important;
+    max-width: calc(100vw - 1rem) !important;
+    margin: 0.5rem;
+  }
+
+  .p-dialog .p-dialog-content {
+    padding: 0;
+  }
+
+  .p-datatable-wrapper {
+    overflow-x: auto;
+  }
+
+  .p-datatable table {
+    min-width: 680px;
+  }
+
+  .p-paginator {
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .p-tablist,
+  .p-tablist-content {
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+  }
+
+  .p-tabs,
+  p-tabs,
+  .p-tabpanels,
+  p-tabpanels,
+  .p-tabpanel,
+  p-tabpanel {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .p-tabpanels {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .p-tablist-tab {
+    white-space: nowrap;
+  }
+
+  form .grid {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    gap: 0 !important;
+  }
+
+  form .grid > * {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    grid-column: auto !important;
+    flex: 0 0 auto !important;
+    padding: 0 !important;
+    margin: 0 0 1.5rem 0 !important;
+  }
+
+  form .grid > *:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  .view-container > .grid,
+  .view-container .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .view-container [class*="col-span"] {
+    grid-column: auto !important;
+  }
+
+  .view-container .flex.items-center.justify-between {
+    align-items: flex-start !important;
+  }
+
+  .view-container .flex.items-center.space-x-4 {
+    align-items: flex-start !important;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container,
+  .dashboard-wrapper,
+  .view-container {
+    padding: 0.75rem !important;
+  }
+
+  .main-surface,
+  .card-glass,
+  .card-modern {
+    padding: 1rem !important;
+  }
+
+  .icon-box,
+  .avatar-circle {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 1.125rem !important;
+  }
 }

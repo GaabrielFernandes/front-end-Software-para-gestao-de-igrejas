@@ -60,6 +60,10 @@
   overflow-y: auto;
 }
 
+.sidenav-nav-item {
+  position: relative;
+}
+
 .sidenav-nav-link {
   display: flex;
   align-items: center;
@@ -186,4 +190,98 @@
 .sidenav-collapsed .logout-btn {
   justify-content: center;
   padding: 0.7rem 0;
+}
+
+.mobile-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .sidenav {
+    display: none;
+  }
+
+  .mobile-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
+    min-height: calc(4.75rem + env(safe-area-inset-bottom));
+    padding: 0.45rem 0.5rem calc(0.45rem + env(safe-area-inset-bottom));
+    background: var(--bg-sidebar);
+    border-top: 1px solid var(--border-color);
+    box-shadow: 0 -10px 24px rgba(15, 23, 42, 0.18);
+  }
+
+  .mobile-nav-link {
+    position: relative;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.28rem;
+    min-height: 3.75rem;
+    padding: 0.25rem 0.15rem;
+    margin: 0;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text-dim);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .mobile-nav-link i {
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+
+  .mobile-nav-link span {
+    max-width: 100%;
+    overflow: hidden;
+    color: inherit;
+    font-size: 0.68rem;
+    font-weight: 600;
+    line-height: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .mobile-nav-link:hover,
+  .mobile-active {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+  }
+
+  .mobile-active::before {
+    content: '';
+    position: absolute;
+    top: 0.25rem;
+    left: 50%;
+    width: 1.5rem;
+    height: 3px;
+    border-radius: 999px;
+    background: var(--accent-blue);
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-nav {
+    min-height: calc(4.5rem + env(safe-area-inset-bottom));
+    padding-inline: 0.35rem;
+  }
+
+  .mobile-nav-link {
+    min-height: 3.55rem;
+  }
+
+  .mobile-nav-link span {
+    font-size: 0.64rem;
+  }
 }

@@ -1,16 +1,103 @@
-<p-toast position="top-center"/>
-<div class="p-6 bg-slate-100 min-h-screen">
-  <div class="bg-white p-6 rounded-xl shadow-md">
-    <h1 class="text-2xl font-bold text-slate-800">
-      Tailwind funcionando 🎉
-    </h1>
-    <p class="text-slate-500 mt-2">
-      Angular 18 + Tailwind CSS
-    </p>
+<p-toast></p-toast>
 
-    <button class="mt-4 px-4 py-2 rounded-lg bg-cyan-500 text-white hover:bg-cyan-600">
-      Testar botão
-    </button>
-  </div>
+<div class="dashboard-wrapper">
+  <!-- Header Seccionado -->
+  <header class="dashboard-header">
+    <div class="header-content">
+      <div class="title-group">
+        <h1>Olá, {{ nomeUsuario }}!</h1>
+        <p class="subtitle">Visão geral da membresia e estatísticas institucionais</p>
+      </div>
+
+      <div class="header-info">
+        <div class="date-badge">
+          <i class="pi pi-calendar"></i>
+          <span>{{ dataAtual | date:'EEEE, dd \'de\' MMMM' }}</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-body">
+    <!-- Grid de Indicadores (Cards) -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <div class="icon-box blue"><i class="pi pi-users"></i></div>
+        <div class="stat-details">
+          <span class="label">Total de Membros</span>
+          <h2 class="value">1.245</h2>
+          <span class="trend positive">+5.2% este mês</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="icon-box green"><i class="pi pi-check-circle"></i></div>
+        <div class="stat-details">
+          <span class="label">Membros Ativos</span>
+          <h2 class="value">1.180</h2>
+          <span class="sub-label">94.8% da igreja</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="icon-box gold"><i class="pi pi-gift"></i></div>
+        <div class="stat-details">
+          <span class="label">Aniversariantes</span>
+          <h2 class="value">38</h2>
+          <span class="sub-label">Mês de Maio</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Conteúdo Principal (Gráfico e Tabela) -->
+    <section class="content-grid">
+      <!-- Card do Gráfico -->
+      <div class="card-glass chart-section">
+        <h3>Distribuição por Idade</h3>
+        <div class="chart-container">
+          <p-chart type="doughnut" [data]="pieData" [options]="pieOptions" height="280px"></p-chart>
+        </div>
+      </div>
+
+      <!-- Card da Tabela -->
+      <div class="card-glass table-section">
+        <div class="section-header">
+          <h3>Membros Recentes</h3>
+          <button class="btn-text">Ver todos</button>
+        </div>
+        <table class="modern-table">
+          <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Status</th>
+            <th>Departamento</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let membro of membrosRecentes">
+            <td data-label="Nome">{{ membro.nome }}</td>
+            <td data-label="Status"><span class="badge" [ngClass]="membro.statusClass">{{ membro.status }}</span></td>
+            <td data-label="Departamento">{{ membro.depto }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="birthday-section">
+      <div class="card-glass full-width">
+        <div class="section-header">
+          <h3><i class="pi pi-gift" style="margin-right: 10px; color: #f59e0b;"></i> Próximos Aniversariantes</h3>
+        </div>
+        <div class="birthday-list">
+          <div class="birthday-item" *ngFor="let niver of proximosAniversariantes">
+            <div class="user-avatar-small">{{ niver.nome.charAt(0) }}</div>
+            <div class="niver-info">
+              <span class="niver-name">{{ niver.nome }}</span>
+              <span class="niver-date">{{ niver.data }} • {{ niver.idade }} anos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </div>
-

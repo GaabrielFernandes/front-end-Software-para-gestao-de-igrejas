@@ -1,134 +1,165 @@
-<div class="grid grid-cols-12 gap-4 mt-5 text-center">
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Nome: </strong>{{membro?.nomeCompleto ? membro?.nomeCompleto : 'Não informado'}}</span>
+<div class="view-container p-6 animate-fade-in">
+  <!-- Header de Identificação -->
+  <div class="flex items-center justify-between mb-8 pb-4 border-b border-gray-100">
+    <div class="flex items-center space-x-4">
+      <div class="avatar-circle shadow-lg flex items-center justify-center bg-primary-gradient text-white text-2xl font-bold">
+        {{ membro?.nomeCompleto?.charAt(0) }}
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold text-gray-800">{{membro?.nomeCompleto || 'Não informado'}}</h2>
+        <div class="flex gap-2 mt-1">
+          <span class="badge shadow-sm flex items-center gap-2" [ngClass]="'status-' + membro?.tipoMembro">
+            <i [ngClass]="{
+              'pi pi-check-circle': membro?.tipoMembro === 'ATIVO',
+              'pi pi-users': membro?.tipoMembro === 'CONGREGADO',
+              'pi pi-star': membro?.tipoMembro === 'CRIANCA',
+              'pi pi-user-minus': membro?.tipoMembro === 'REMOVIDO',
+              'pi pi-exclamation-triangle': membro?.tipoMembro === 'EM_DISCIPLINA'
+            }"></i>
+            {{
+              membro?.tipoMembro === 'ATIVO' ? 'Ativo' :
+                membro?.tipoMembro === 'CONGREGADO' ? 'Congregado' :
+                  membro?.tipoMembro === 'CRIANCA' ? 'Criança' :
+                    membro?.tipoMembro === 'REMOVIDO' ? 'Removido' :
+                      membro?.tipoMembro === 'EM_DISCIPLINA' ? 'Em Disciplina' : 'Não informado'
+            }}
+          </span>
+        </div>
+      </div>
     </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Sexo: </strong>{{membro?.sexo ? membro?.sexo : 'Não informado'}}</span>
-    </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Data de Nascimento: </strong>{{membro?.dataNascimento ? (membro?.dataNascimento | date:'dd/MM/yyyy') : 'Não informado'}}</span>
-    </div>
-</div>
-<div class="grid grid-cols-12 gap-4 mt-5 text-center">
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Cidade de Nascimento: </strong>{{membro?.cidadeNascimento ? membro?.cidadeNascimento : 'Não informado'}}</span>
-    </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>CEP Nascimento: </strong>{{membro?.cepNascimento ? membro?.cepNascimento : 'Não informado'}}</span>
-    </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>UF Nascimento: </strong>{{membro?.ufNascimento ? membro?.ufNascimento : 'Não informado'}}</span>
-    </div>
-</div>
-<div class="grid grid-cols-12 gap-4 mt-5 text-center">
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Cidade Atual: </strong>{{membro?.cidadeAtual ? membro?.cidadeAtual : 'Não informado'}}</span>
-    </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>CEP Atual: </strong>{{membro?.cepAtual ? membro?.cepAtual : 'Não informado'}}</span>
-    </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>UF Atual: </strong>{{membro?.ufAtual ? membro?.ufAtual : 'Não informado'}}</span>
-    </div>
-</div>
-<div class="grid grid-cols-12 gap-4 mt-5 text-center">
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Estado Civil: </strong>{{membro?.estadoCivil ? membro?.estadoCivil : 'Não informado'}}</span>
-    </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Data de Casamento: </strong>{{membro?.dataCasamento ? (membro?.dataCasamento | date:'dd/MM/yyyy') : 'Não informado'}}</span>
-    </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Conjuge: </strong>{{membro?.conjuge ? membro?.conjuge : 'Não informado'}}</span>
-    </div>
-</div>
-<div class="grid grid-cols-12 gap-4 mt-5 text-center">
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Mãe: </strong>{{membro?.mae ? membro?.mae : 'Não informado'}}</span>
-    </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Pai: </strong>{{membro?.pai ? membro?.pai : 'Não informado'}}</span>
-    </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Celular: </strong>{{membro?.celular ? membro?.celular : 'Não informado'}}</span>
-    </div>
-</div>
-<div class="grid grid-cols-12 gap-4 mt-5 text-center">
-  <div class="col-span-12 md:col-span-6 lg:col-span-4">
-    <span><strong>Cep: </strong>{{membro?.enderecoAtual?.cep ? membro?.enderecoAtual?.cep : 'Não informado'}}</span>
   </div>
-  <div class="col-span-12 md:col-span-6 lg:col-span-4">
-    <span><strong>Cidade: </strong>{{membro?.enderecoAtual?.cidade ? membro?.enderecoAtual?.cidade : 'Não informado'}}</span>
+
+  <div class="grid grid-cols-12 gap-6">
+
+    <!-- Bloco: Informações Pessoais e Naturalidade -->
+    <div class="col-span-8 card-modern shadow-sm p-6">
+      <h3 class="section-title"><i class="pi pi-user mr-2 text-blue-500"></i> Informações Pessoais</h3>
+      <div class="grid grid-cols-3 gap-6 mt-4">
+        <div class="info-group">
+          <label>Sexo</label>
+          <p>{{membro?.sexo || 'Não informado'}}</p>
+        </div>
+        <div class="info-group">
+          <label>Nascimento</label>
+          <p>{{membro?.dataNascimento ? (membro?.dataNascimento | date:'dd/MM/yyyy') : 'Não informado'}}</p>
+        </div>
+        <div class="info-group">
+          <label>Estado Civil</label>
+          <p>{{membro?.estadoCivil || 'Não informado'}}</p>
+        </div>
+        <div class="info-group">
+          <label>Cônjuge</label>
+          <p>{{membro?.conjuge || 'N/A'}}</p>
+        </div>
+        <div class="info-group">
+          <label>Data Casamento</label>
+          <p>{{membro?.dataCasamento ? (membro?.dataCasamento | date:'dd/MM/yyyy') : 'N/A'}}</p>
+        </div>
+        <div class="info-group border-l-2 border-blue-100 pl-3">
+          <label>Naturalidade (Cidade/UF)</label>
+          <p>{{membro?.cidadeNascimento || '---'}} / {{membro?.ufNascimento || '--'}}</p>
+        </div>
+        <div class="info-group">
+          <label>Mãe</label>
+          <p>{{membro?.mae || 'Não informado'}}</p>
+        </div>
+        <div class="info-group">
+          <label>Pai</label>
+          <p>{{membro?.pai || 'Não informado'}}</p>
+        </div>
+        <div class="info-group">
+          <label>CEP Nascimento</label>
+          <p>{{membro?.cepNascimento || '---'}}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bloco: Contato -->
+    <div class="col-span-4 card-modern shadow-sm p-6 accent-border">
+      <h3 class="section-title"><i class="pi pi-phone mr-2 text-blue-600"></i> Contato</h3>
+      <div class="space-y-4 mt-4">
+        <div class="contact-item">
+          <i class="pi pi-whatsapp text-green-500 text-xl"></i>
+          <div>
+            <label>Celular</label>
+            <p>{{membro?.celular || 'Não informado'}}</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="pi pi-envelope text-blue-500 text-xl"></i>
+          <div class="truncate">
+            <label>E-mail</label>
+            <p class="truncate">{{membro?.email || 'Não informado'}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bloco: Endereço -->
+    <div class="col-span-12 card-modern shadow-sm p-6">
+      <h3 class="section-title"><i class="pi pi-map-marker mr-2 text-red-500"></i> Localização Atual</h3>
+      <div class="grid grid-cols-4 gap-6 mt-4">
+        <div class="info-group col-span-2">
+          <label>Logradouro e Bairro</label>
+          <p>{{membro?.enderecoAtual?.logradouro}}, {{membro?.enderecoAtual?.bairro}}</p>
+        </div>
+        <div class="info-group">
+          <label>Complemento</label>
+          <p>{{membro?.enderecoAtual?.complemento || 'N/A'}}</p>
+        </div>
+        <div class="info-group">
+          <label>Cidade/UF | CEP</label>
+          <p>{{membro?.enderecoAtual?.cidade}} - {{membro?.enderecoAtual?.uf}} | {{membro?.enderecoAtual?.cep}}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bloco: Vida Ministerial e Histórico -->
+    <div class="col-span-12 card-modern shadow-sm p-6 border-t-4 border-blue-400">
+      <h3 class="section-title text-blue-600"><i class="pi pi-book mr-2"></i> Vida Ministerial & Histórico</h3>
+      <div class="grid grid-cols-4 gap-6 mt-4">
+        <div class="info-group">
+          <label>Batismo Águas</label>
+          <p>{{membro?.dataBatismo | date:'dd/MM/yyyy' || 'Pendente'}}</p>
+        </div>
+        <div class="info-group">
+          <label>Batismo Espírito Santo</label>
+          <p>{{membro?.dataBatismoEspiritoSanto || 'Não informado'}}</p>
+        </div>
+        <div class="info-group">
+          <label>Data de Admissão</label>
+          <p class="font-bold text-blue-700">{{membro?.dataAdmissao | date:'dd/MM/yyyy' || '---'}}</p>
+        </div>
+        <div class="info-group">
+          <label>Admitido Por</label>
+          <p>{{membro?.admitidoPor}} {{membro?.admitidoPorOutro ? '(' + membro?.admitidoPorOutro + ')' : ''}}</p>
+        </div>
+        <div class="info-group">
+          <label>Ministério Principal</label>
+          <p>{{membro?.ministerioPrincipal || 'Nenhum'}}</p>
+        </div>
+        <div class="info-group">
+          <label>Departamento</label>
+          <p>{{membro?.departamentoPrincipal || '---'}}</p>
+        </div>
+        <div class="info-group">
+          <label>Função Principal</label>
+          <p>{{membro?.funcaoDepartamental || 'Membro'}}</p>
+        </div>
+        <!-- Exibição condicional de remoção -->
+        <div class="info-group bg-red-50 p-2 rounded" *ngIf="membro?.dataRemocao">
+          <label class="text-red-500">Data Remoção</label>
+          <p>{{membro?.dataRemocao | date:'dd/MM/yyyy'}}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bloco: Observações -->
+    <div class="col-span-12 card-modern shadow-sm p-6 bg-yellow-50/30">
+      <h3 class="section-title text-yellow-700"><i class="pi pi-info-circle mr-2"></i> Observações</h3>
+      <p class="mt-2 text-gray-600 italic">
+        {{membro?.observacoes || 'Nenhuma observação registrada.'}}
+      </p>
+    </div>
   </div>
-  <div class="col-span-12 md:col-span-6 lg:col-span-4">
-    <span><strong>UF: </strong>{{membro?.enderecoAtual?.uf ? membro?.enderecoAtual?.uf : 'Não informado'}}</span>
-  </div>
-</div>
-<div class="grid grid-cols-12 gap-4 mt-5 text-center">
-  <div class="col-span-12 md:col-span-6 lg:col-span-4">
-    <span><strong>Endereco: </strong>{{membro?.enderecoAtual?.logradouro ? membro?.enderecoAtual?.logradouro : 'Não informado'}}</span>
-  </div>
-  <div class="col-span-12 md:col-span-6 lg:col-span-4">
-    <span><strong>Bairro: </strong>{{membro?.enderecoAtual?.bairro ? membro?.enderecoAtual?.bairro : 'Não informado'}}</span>
-  </div>
-  <div class="col-span-12 md:col-span-6 lg:col-span-4">
-    <span><strong>Complemento: </strong>{{membro?.enderecoAtual?.complemento ? membro?.enderecoAtual?.complemento : 'Não informado'}}</span>
-  </div>
-</div>
-<div class="grid grid-cols-12 gap-4 mt-5 text-center">
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Email: </strong>{{membro?.email ? membro?.email : 'Não informado'}}</span>
-    </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Tipo de Membro: </strong>{{membro?.tipoMembro ? membro?.tipoMembro : 'Não informado'}}</span>
-    </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Situação: </strong>{{membro?.situacao ? membro?.situacao : 'Não informado'}}</span>
-    </div>
-</div>
-<div class="grid grid-cols-12 gap-4 mt-5 text-center">
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Email: </strong>{{membro?.email ? membro?.email : 'Não informado'}}</span>
-    </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Data de Batismo: </strong>{{membro?.dataBatismo ? (membro?.dataBatismo | date:'dd/MM/yyyy') : 'Não informado'}}</span>
-    </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Batismo com Espirito Santo: </strong>{{membro?.dataBatismoEspiritoSanto ? membro?.dataBatismoEspiritoSanto : 'Não informado'}}</span>
-    </div>
-</div>
-<div class="grid grid-cols-12 gap-4 mt-5 text-center">
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Data de Admissão: </strong>{{membro?.dataAdmissao ? (membro?.dataAdmissao | date:'dd/MM/yyyy') : 'Não informado'}}</span>
-    </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Admitido por: </strong>{{membro?.admitidoPor ? membro?.admitidoPor : 'Não informado'}}</span>
-    </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Admitido por outro: </strong>{{membro?.admitidoPorOutro ? membro?.admitidoPorOutro : 'Não informado'}}</span>
-    </div>
-</div>
-<div class="grid grid-cols-12 gap-4 mt-5 text-center">
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Ministerio Principal: </strong>{{membro?.ministerioPrincipal ? membro?.ministerioPrincipal : 'Não informado'}}</span>
-    </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Departamento Principal: </strong>{{membro?.departamentoPrincipal ? membro?.departamentoPrincipal : 'Não informado'}}</span>
-    </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Função Principal: </strong>{{membro?.funcaoDepartamental ? membro?.funcaoDepartamental : 'Não informado'}}</span>
-    </div>
-</div>
-<div class="grid grid-cols-12 gap-4 mt-5 text-center">
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Data Remoção: </strong>{{membro?.dataRemocao ? (membro?.dataRemocao | date:'dd/MM/yyyy') : 'Não informado'}}</span>
-    </div>
-    <div class="col-span-12 md:col-span-6 lg:col-span-4">
-        <span><strong>Removido por: </strong>{{membro?.removidoPor ? membro?.removidoPor : 'Não informado'}}</span>
-    </div>
-</div>
-<div class="grid grid-cols-12 mt-5 gap-4 text-center">
-    <div class="col-span-12">
-        <span><strong>Observação: </strong>{{membro?.observacoes ? membro?.observacoes : 'Não informado'}}</span>
-    </div>
 </div>

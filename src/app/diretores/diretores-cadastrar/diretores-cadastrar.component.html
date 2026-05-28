@@ -1,1 +1,81 @@
-<p>diretores-cadastrar works!</p>
+<div class="container">
+  <div class="main-surface">
+    <div class="section-header">
+      <div class="title-wrapper">
+        <div class="icon-box">
+          <i class="pi pi-user-plus"></i>
+        </div>
+        <div>
+          <h1 class="main-title">{{ modoEdicao ? 'Editar Diretor' : 'Cadastro de Diretor' }}</h1>
+          <p class="main-subtitle">Preencha os dados abaixo para registrar ou atualizar um diretor no sistema.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <form class="director-form" [formGroup]="formulario" (ngSubmit)="salvarDiretor()">
+      <div class="form-body">
+        <div class="form-tabs" aria-label="Seções do cadastro">
+          <div class="tab-item active">
+            <i class="pi pi-id-card"></i>
+            Dados do Diretor
+          </div>
+        </div>
+
+        <div class="form-panel">
+          <div class="grid grid-cols-12 gap-6 mt-2">
+            <div class="col-span-12 md:col-span-6">
+              <p-float-label>
+                <input formControlName="nome" pInputText fluid id="nome" name="nome" required autocomplete="name" placeholder=" " />
+                <label for="nome">Nome</label>
+              </p-float-label>
+            </div>
+
+            <div class="col-span-12 md:col-span-6">
+              <p-float-label>
+                <input formControlName="email" pInputText fluid type="email" id="email" name="email" required autocomplete="email" placeholder=" " />
+                <label for="email">E-mail</label>
+              </p-float-label>
+            </div>
+
+            <div class="col-span-12 md:col-span-6">
+              <p-float-label>
+                <p-password id="senha" formControlName="senha" [toggleMask]="true" [feedback]="false" styleClass="w-full" [fluid]="true" />
+                <label for="senha">{{ modoEdicao ? 'Nova senha provisoria (opcional)' : 'Senha provisoria' }}</label>
+              </p-float-label>
+            </div>
+
+            <div class="col-span-12 md:col-span-6">
+              <p-float-label>
+                <p-select
+                  fluid
+                  formControlName="departamento"
+                  optionLabel="label"
+                  optionValue="value"
+                  [options]="departamentos"
+                  [showClear]="true"
+                  appendTo="body"
+                >
+                </p-select>
+                <label for="">Departamento</label>
+              </p-float-label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-footer">
+          <a routerLink="/diretores" class="btn btn-cancelar">
+            <i class="pi pi-times"></i>
+            Cancelar
+          </a>
+
+          <button type="submit" class="btn btn-salvar">
+            <i class="pi pi-check-circle"></i>
+            {{ modoEdicao ? 'Salvar Alteracoes' : 'Salvar Registro' }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
